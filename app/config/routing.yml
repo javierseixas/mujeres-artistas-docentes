@@ -1,0 +1,3 @@
+mad_user:
+    resource: "@MADUserBundle/Resources/config/routing.yml"
+    prefix:   /

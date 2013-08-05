@@ -7,6 +7,8 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
+use Behat\CommonContexts\SymfonyDoctrineContext;
+
 //
 // Require 3rd-party libraries here:
 //
@@ -28,17 +30,33 @@ class FeatureContext extends BehatContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
+        $this->useContext('symfony_doctrine_context',  new SymfonyDoctrineContext);
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    
+
+    /**
+     * @Given /^I see the login form$/
+     */
+    public function iSeeTheLoginForm()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I fill the form$/
+     */
+    public function iFillTheForm()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I log in the private area$/
+     */
+    public function iLogInThePrivateArea()
+    {
+        throw new PendingException();
+    }
+
 }
