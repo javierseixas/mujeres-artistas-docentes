@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
 
 {% block body %}
 <ul>
@@ -6,5 +6,9 @@
     <li><a href="#">Mis experiencias</a></li>
     <li><a href="#">Experiencias compartidas</a></li>
     <li><a href="#">Foro</a></li>
+
+    {% if is_granted('ROLE_RESEARCHER') %}
+    <li><a href="#" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
+    {%  endif %}
 </ul>
 {% endblock body %}

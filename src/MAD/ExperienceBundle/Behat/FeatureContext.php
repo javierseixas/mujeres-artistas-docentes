@@ -4,9 +4,10 @@ namespace MAD\ExperienceBundle\Behat;
 
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
-    Behat\Behat\Context\BehatContext,
     Behat\Behat\Exception\PendingException;
 use Behat\Behat\Context\Step\Given;
+use Behat\Behat\Context\Step\Then;
+use Behat\Behat\Context\Step\When;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
@@ -36,6 +37,8 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      */
     public function __construct(array $parameters)
     {
+        $this->parameters = $parameters;
+
         // Initialize your context here
         $this->useContext('symfony_doctrine_context',  new SymfonyDoctrineContext);
     }
@@ -62,7 +65,7 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     }
 
     /**
-     * @Transform /^table:username,password,email$/
+     * @Transform /^table:username,password,email,roles$/
      */
     public function castUsersTable(TableNode $usersTable)
     {
@@ -70,8 +73,10 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         foreach ($usersTable->getHash() as $userHash) {
             $user = new User();
             $user->setUsername($userHash['username']);
-            $user->setPassword($userHash['password']);
+            $user->setPlainPassword($userHash['password']);
             $user->setEmail($userHash['email']);
+            $user->setEnabled(true);
+            $user->setRoles(explode(',', $userHash['roles']));
             $users[] = $user;
         }
 
@@ -96,17 +101,21 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function iSeeTheLoginForm()
     {
         return array(
-            new Given('I should see an "username" element'),
-            new Given('I should see an "password" element'),
+            new Given('I should see an "#username" element'),
+            new Given('I should see an "#password" element'),
         );
     }
 
     /**
-     * @When /^I fill the form$/
+     * @When /^I fill the form with user "([^"]*)" and "([^"]*)"$/
      */
-    public function iFillTheForm()
+    public function iFillTheFormWithUserAnd($username, $password)
     {
-        throw new PendingException();
+        return array(
+            new When('I fill in "username" with "'.$username.'"'),
+            new When('I fill in "_password" with "'.$password.'"'),
+            new When('I press "_submit"'),
+        );
     }
 
     /**
@@ -114,7 +123,24 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
      */
     public function iLogInThePrivateArea()
     {
-        throw new PendingException();
+        return new Then('I should see text matching "Bienvenida patricia"');
     }
+
+    /**
+     * @Then /^I should not see the option Preguntar experiencias$/
+     */
+    public function iShouldNotSeeTheOptionPreguntarExperiencias()
+    {
+        return new Then('I should not see a "#askExperiencesMenuOpt" element');
+    }
+
+    /**
+     * @Then /^I should see the option Preguntar experiencias$/
+     */
+    public function iShouldSeeTheOptionPreguntarExperiencias()
+    {
+        return new Then('I should see a "#askExperiencesMenuOpt" element');
+    }
+
 
 }
