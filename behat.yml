@@ -1,8 +1,17 @@
 default:
     context:
-        class: FeatureContext
+        parameters:
+            base_url: http://mujeres-artistas-docentes.local
+        class: MAD\ExperienceBundle\Behat\FeatureContext
     paths:
         features: features
         bootstrap: %behat.paths.features%/bootstrap
     extensions:
-        Behat\Symfony2Extension\Extension: ~
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+              env: test
+        Behat\MinkExtension\Extension:
+            base_url: http://mujeres-artistas-docentes.local
+            selenium2: ~
+            default_session: selenium2
