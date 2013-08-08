@@ -76,8 +76,10 @@ class DataContext extends BehatContext implements KernelAwareInterface
             $user->setEnabled('yes' === $enabled);
             $user->setPlainPassword($password);
 
-            if (!empty($roles)) {
+            if (!empty($roles) && is_array($roles)) {
                 $user->setRoles($roles);
+            } else {
+                $user->addRole($roles);
             }
 
             $this->getEntityManager()->persist($user);

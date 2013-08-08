@@ -5,7 +5,7 @@ Feature: Write experience
     I need to access a list from where I'll can write them and share with the researcher
 
     Background:
-      Given I'm logged in as a teacher
+      Given I am logged in as a teacher
        When I click on Mis experiencies
        Then I should be on Mis experiencias page
 
