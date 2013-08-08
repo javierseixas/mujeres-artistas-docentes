@@ -4,7 +4,7 @@ Feature: Teacher login
     I need to be able to Login through a login form
 
     Background:
-    	Given these users:
+    	Given there are following users:
     	    | username | password | email           | roles                        |
     	    | ross     | ross     | ross@test.local | ROLE_TEACHER,ROLE_RESEARCHER |
     	    | patricia | pati     | pati@test.local | ROLE_TEACHER                 |

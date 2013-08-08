@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Behat\CommonContexts\SymfonyDoctrineContext;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use MAD\UserBundle\Entity\User;
+use MAD\ExperienceBundle\Behat\DataContext;
 
 //
 // Require 3rd-party libraries here:
@@ -39,8 +40,8 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     {
         $this->parameters = $parameters;
 
-        // Initialize your context here
         $this->useContext('symfony_doctrine_context',  new SymfonyDoctrineContext);
+        $this->useContext('data', new DataContext());
     }
 
     /**
@@ -65,25 +66,6 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     }
 
     /**
-     * @Transform /^table:username,password,email,roles$/
-     */
-    public function castUsersTable(TableNode $usersTable)
-    {
-        $users = array();
-        foreach ($usersTable->getHash() as $userHash) {
-            $user = new User();
-            $user->setUsername($userHash['username']);
-            $user->setPlainPassword($userHash['password']);
-            $user->setEmail($userHash['email']);
-            $user->setEnabled(true);
-            $user->setRoles(explode(',', $userHash['roles']));
-            $users[] = $user;
-        }
-
-        return $users;
-    }
-
-    /**
      * @Given /^these users:$/
      */
     public function theseUsers(array $users)
@@ -92,6 +74,57 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
             $this->getEntityManager()->persist($user);
         }
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @Given /^I am logged in as a researcher$/
+     */
+    public function iAmLoggedInAsResearcher()
+    {
+        $this->iAmLoggedInAsRole('ROLE_RESEARCHER');
+    }
+
+    /**
+     * @Given /^I am logged in as a teacher$/
+     */
+    public function iAmLoggedInAsTeacher()
+    {
+        $this->iAmLoggedInAsRole('ROLE_TEACHER');
+    }
+
+    /**
+     * Create user and login with given role.
+     *
+     * @param string $role
+     */
+    private function iAmLoggedInAsRole($role)
+    {
+        $this->getSubContext('data')->thereIsUser('email@foo.com', 'password', $role);
+        $this->getSession()->visit($this->generatePageUrl('fos_user_security_login'));
+
+        $this->fillField('Email', 'email@foo.com');
+        $this->fillField('Password', 'password');
+        $this->pressButton('login');
+    }
+
+    /**
+     * @Then /^I should be logged in$/
+     */
+    public function iShouldBeLoggedIn()
+    {
+        if (!$this->getSecurityContext()->isGranted('ROLE_USER')) {
+            throw new AuthenticationException('User is not authenticated.');
+        }
+    }
+
+    /**
+     * @Then /^I should not be logged in$/
+     */
+    public function iShouldNotBeLoggedIn()
+    {
+        if ($this->getSecurityContext()->isGranted('ROLE_USER')) {
+            throw new AuthenticationException('User was not expected to be logged in, but he is.');
+        }
     }
 
 

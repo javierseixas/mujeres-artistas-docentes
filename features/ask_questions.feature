@@ -5,7 +5,7 @@ Feature: Ask questions
     I need to ask them questions that they will receive and will answer
 
     Background:
-        Given I'm on the Gathering Place
+        Given I'm logged in as a researcher
           And I should see the option Preguntar experiencias
 
 
