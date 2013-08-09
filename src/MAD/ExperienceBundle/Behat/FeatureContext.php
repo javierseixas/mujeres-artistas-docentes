@@ -31,6 +31,18 @@ use MAD\ExperienceBundle\Behat\DataContext;
 class FeatureContext extends MinkContext implements KernelAwareInterface
 {
     /**
+     * Actions.
+     *
+     * @var array
+     */
+    private $actions = array(
+        'viewing'  => 'show',
+        'creation' => 'create',
+        'editing'  => 'update',
+        'building' => 'build',
+    );
+
+    /**
      * Initializes context.
      * Every scenario gets it's own context object.
      *
@@ -102,9 +114,9 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
         $this->getSubContext('data')->thereIsUser('javi', 'email@foo.com', 'password', $role);
         $this->getSession()->visit($this->generatePageUrl('fos_user_security_login'));
 
-        $this->fillField('Email', 'email@foo.com');
-        $this->fillField('Password', 'password');
-        $this->pressButton('login');
+        $this->fillField('username', 'javi');
+        $this->fillField('password', 'password');
+        $this->pressButton('_submit');
     }
 
     /**
@@ -173,6 +185,90 @@ class FeatureContext extends MinkContext implements KernelAwareInterface
     public function iShouldSeeTheOptionPreguntarExperiencias()
     {
         return new Then('I should see a "#askExperiencesMenuOpt" element');
+    }
+
+    /**
+     * @Given /^I should be on Mi Espacio$/
+     */
+    public function iShouldBeOnMiEspacio()
+    {
+        return new Given('I should be on "/mi-espacio"');
+    }
+
+    /**
+     * @When /^I click on Mis Experiencias$/
+     */
+    public function iClickOnMisExperiencias()
+    {
+        return new When('I follow "myExperiencesMenuOpt"');
+    }
+
+    /**
+     * @Then /^I should be on Mis Experiencias$/
+     */
+    public function iShouldBeOnMisExperiencias()
+    {
+        return new Given('I should be on "/mis-experiencias"');
+    }
+
+
+
+
+    /**
+     * Generate page url.
+     * This method uses simple convention where page argument is prefixed
+     * with "sylius_" and used as route name passed to router generate method.
+     *
+     * @param string $page
+     * @param array  $parameters
+     *
+     * @return string
+     */
+    private function generatePageUrl($route, array $parameters = array())
+    {
+        $path = $this->generateUrl($route, $parameters);
+
+        if ('SahiDriver' === strstr(get_class($this->getSession()->getDriver()), 'SahiDriver')) {
+            return sprintf('%s%s', $this->getMinkParameter('base_url'), $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Generate url.
+     *
+     * @param string  $route
+     * @param array   $parameters
+     * @param Boolean $absolute
+     *
+     * @return string
+     */
+    private function generateUrl($route, array $parameters = array(), $absolute = false)
+    {
+        return $this->getService('router')->generate($route, $parameters, $absolute);
+    }
+
+    /**
+     * Get service by id.
+     *
+     * @param string $id
+     *
+     * @return object
+     */
+    private function getService($id)
+    {
+        return $this->getContainer()->get($id);
+    }
+
+    /**
+     * Returns Container instance.
+     *
+     * @return ContainerInterface
+     */
+    private function getContainer()
+    {
+        return $this->kernel->getContainer();
     }
 
 

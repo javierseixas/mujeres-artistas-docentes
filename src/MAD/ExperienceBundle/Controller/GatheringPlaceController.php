@@ -10,4 +10,9 @@ class GatheringPlaceController extends Controller
     {
         return $this->render('MADExperienceBundle:Home:index.html.twig');
     }
+
+    public function myExperiencesAction()
+    {
+        return $this->render('MADExperienceBundle:Home:my_experiences.html.twig');
+    }
 }

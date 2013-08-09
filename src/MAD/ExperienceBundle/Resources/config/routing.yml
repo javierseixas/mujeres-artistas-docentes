@@ -1,3 +1,7 @@
 mad_experience_homepage:
-    pattern:  /espacio-de-encuentro
+    pattern:  /mi-espacio
     defaults: { _controller: MADExperienceBundle:GatheringPlace:home }
+
+mad_experience_my_experiences:
+    pattern:  /mis-experiencias
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:myExperiences }
