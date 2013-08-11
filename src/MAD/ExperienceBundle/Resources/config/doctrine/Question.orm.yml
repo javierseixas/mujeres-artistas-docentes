@@ -1,0 +1,36 @@
+MAD\ExperienceBundle\Entity\Question:
+    type: entity
+    table: questions
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: '100'
+        wording:
+            type: text
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
+    manyToOne:
+        subject:
+            targetEntity: MAD\ExperienceBundle\Entity\Subject
+            inversedBy: questions
+            joinColumn:
+                name: subject_id
+                referencedColumnName: id
+                nullable: true
+            cascade: ['persist']
+    oneToMany:
+        experiences:
+            targetEntity: MAD\ExperienceBundle\Entity\Experience
+            mappedBy: question
+            cascade: ["all"]
+    lifecycleCallbacks: { }

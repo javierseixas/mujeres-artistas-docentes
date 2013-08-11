@@ -6,3 +6,8 @@ MAD\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    oneToMany:
+        experiences:
+            targetEntity: MAD\ExperienceBundle\Entity\Experience
+            mappedBy: user
+            cascade: ["all"]
