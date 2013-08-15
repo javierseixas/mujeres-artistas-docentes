@@ -22,12 +22,12 @@ class Experience
     /**
      * @var boolean
      */
-    private $sharedWithResearcher;
+    private $sharedWithResearcher = true;
 
     /**
      * @var boolean
      */
-    private $sharedWithAll;
+    private $sharedWithAll = false;
 
     /**
      * @var \DateTime
@@ -40,7 +40,7 @@ class Experience
     private $user;
 
     /**
-     * @var \MAD\ExperienceBundle\Entity\Experience
+     * @var \MAD\ExperienceBundle\Entity\Question
      */
     private $question;
 
@@ -173,10 +173,10 @@ class Experience
     /**
      * Set question
      *
-     * @param \MAD\ExperienceBundle\Entity\Experience $question
+     * @param \MAD\ExperienceBundle\Entity\Question $question
      * @return Experience
      */
-    public function setQuestion(\MAD\ExperienceBundle\Entity\Experience $question = null)
+    public function setQuestion(Question $question = null)
     {
         $this->question = $question;
     
@@ -186,7 +186,7 @@ class Experience
     /**
      * Get question
      *
-     * @return \MAD\ExperienceBundle\Entity\Experience 
+     * @return \MAD\ExperienceBundle\Entity\Question
      */
     public function getQuestion()
     {

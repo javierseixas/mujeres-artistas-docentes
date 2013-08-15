@@ -1,0 +1,12 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block body %}
+
+    <h1>Leer experiencia</h1>
+
+    <div>Por <i>nombre</i> en {{ experience.createdAt | date('d/m/Y') }}</div>
+
+    <div>{{ experience.account }}</div>
+
+{% endblock body %}
+

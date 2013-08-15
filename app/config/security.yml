@@ -56,5 +56,6 @@ security:
         - { path: ^/mis-experiencias, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
+        - { path: ^/investigacion, role: [ROLE_ADMIN, ROLE_RESEARCHER] }
 #        - { path: ^/admin/, role: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

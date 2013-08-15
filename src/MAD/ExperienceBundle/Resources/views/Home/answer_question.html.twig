@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <h1>Escribir experiencia</h1>
+    <h1>Escribir experiencia sobre {{ question.title }}</h1>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-notice">
@@ -11,7 +11,7 @@
     {% endfor %}
 
 	<div class="row-fluid">
-        <form action="{{ path('mad_experience_write_experience') }}" method="post" {{ form_enctype(form) }}>
+        <form action="{{ path('mad_experience_answer_question', {questionId:question.id}) }}" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
 
             <input type="submit" />

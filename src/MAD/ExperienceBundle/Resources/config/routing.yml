@@ -9,3 +9,16 @@ mad_experience_my_experiences:
 mad_experience_write_experience:
     pattern:  /mis-experiencias/escribir
     defaults: { _controller: MADExperienceBundle:GatheringPlace:writeExperience }
+
+mad_experience_read_experience:
+    pattern:  /mis-experiencias/leer/{experienceId}
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:readExperience }
+
+
+mad_experience_ask_experience:
+    pattern:  /investigacion/preguntar
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:askExperience }
+
+mad_experience_answer_question:
+    pattern:  /mis-experiencias/responder/{questionId}
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:answerQuestion }

@@ -97,4 +97,12 @@ class Subject
     {
         return $this->questions;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

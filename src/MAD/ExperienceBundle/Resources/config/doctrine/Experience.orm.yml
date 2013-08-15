@@ -1,6 +1,7 @@
 MAD\ExperienceBundle\Entity\Experience:
     type: entity
     table: experiences
+    repositoryClass: MAD\ExperienceBundle\Repository\ExperienceRepository
     fields:
         id:
             type: integer
@@ -32,7 +33,7 @@ MAD\ExperienceBundle\Entity\Experience:
                 nullable: false
             cascade: ['persist']
         question:
-            targetEntity: MAD\ExperienceBundle\Entity\Experience
+            targetEntity: MAD\ExperienceBundle\Entity\Question
             inversedBy: experiences
             joinColumn:
                 name: question_id
