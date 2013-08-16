@@ -12,6 +12,7 @@ class ExperienceRepository extends EntityRepository
         $qb->select('e')
             ->from('MADExperienceBundle:Experience','e')
             ->where($qb->expr()->eq('e.user', ':userId'))
+            ->andWhere($qb->expr()->isNull('e.question'))
             ->setParameter('userId', $userId);
         ;
 

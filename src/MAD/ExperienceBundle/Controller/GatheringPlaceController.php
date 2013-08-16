@@ -10,24 +10,37 @@ use MAD\ExperienceBundle\Form\Type\ExperienceType;;
 
 class GatheringPlaceController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function homeAction()
     {
         return $this->render('MADExperienceBundle:Home:index.html.twig');
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function myExperiencesAction()
     {
+
+        $subjectsList = $this->getDoctrine()->getRepository('MADExperienceBundle:Subject')->findSubjectQuestionsAndAnswersByUser($this->get('security.context')->getToken()->getUser()->getId());
 
         $freeExperiences = $this->getDoctrine()->getRepository('MADExperienceBundle:Experience')->findUserFreeExperiences($this->get('security.context')->getToken()->getUser()->getId());
 
         return $this->render('MADExperienceBundle:Home:my_experiences.html.twig', array(
             'freeExperiences' => $freeExperiences,
+            'subjectsList' => $subjectsList,
         ));
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function writeExperienceAction()
     {
     	$experience = new Experience();
+        $experience->setUser($this->get('security.context')->getToken()->getUser());
 
     	$form = $this->createForm(new ExperienceType(), $experience);
 
@@ -37,7 +50,6 @@ class GatheringPlaceController extends Controller
             $form->submit($request);
 
             if ($form->isValid()) {
-                $experience->setUser($this->get('security.context')->getToken()->getUser());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($experience);
                 $em->flush();
@@ -66,9 +78,15 @@ class GatheringPlaceController extends Controller
 
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws AccessDeniedException
+     */
     public function askExperienceAction()
     {
-        // TODO Check if current user is researcher
+        if (false === $this->get('security.context')->isGranted('ROLE_RESEARCHER')) {
+            throw new AccessDeniedException();
+        }
 
         $question = new Question();
 
@@ -120,12 +138,17 @@ class GatheringPlaceController extends Controller
 
     }
 
+    /**
+     * @param integer $questionId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function answerQuestionAction($questionId)
     {
         $question = $this->getDoctrine()->getRepository('MADExperienceBundle:Question')->find($questionId);
 
         $experience = new Experience();
         $experience->setQuestion($question);
+        $experience->setUser($this->get('security.context')->getToken()->getUser());
 
         $form = $this->createForm(new ExperienceType(), $experience);
 
@@ -135,7 +158,9 @@ class GatheringPlaceController extends Controller
             $form->submit($request);
 
             if ($form->isValid()) {
-                $experience->setUser($this->get('security.context')->getToken()->getUser());
+
+                if (false !== strpos($request->get('share'), 'todas')) $experience->setSharedWithAll(true);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($experience);
                 $em->flush();

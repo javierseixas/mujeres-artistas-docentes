@@ -1,6 +1,6 @@
 {% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
 
-{% block body %}
+{% block content %}
 <ul>
     <li><a href="#">Información</a></li>
     <li><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Mis experiencias</a></li>
@@ -11,4 +11,4 @@
     <li><a href="{{ path('mad_experience_ask_experience') }}" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
     {%  endif %}
 </ul>
-{% endblock body %}
+{% endblock content %}

@@ -14,7 +14,8 @@
         <form action="{{ path('mad_experience_answer_question', {questionId:question.id}) }}" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
 
-            <input type="submit" />
+            <input type="submit" value="Guardar y compartir con Ross" name="share" />
+            <input type="submit" value="Guardar y compartir con todas" name="share" />
         </form>
 	</div>
 

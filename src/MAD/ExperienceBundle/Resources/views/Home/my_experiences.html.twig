@@ -5,10 +5,29 @@
 
     <div><a href="{{  path('mad_experience_write_experience') }}">Escribir una experiencia</a></div>
 
+    <h3>Experiencias para la investigación</h3>
+    <ul>
+        {% for subject in subjectsList %}
+        <li><h4>{{ subject.title }}</h4>
+            <ul>
+                {% for question in subject.questions %}
+                <li>{{ question.title }}
+                    {% if not question.experiences.isEmpty %}
+                        por mi en {{ question.experiences.current.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : question.experiences.current.id}) }}">Leer</a>
+                    {% else %}
+                        <a href="{{ path('mad_experience_answer_question', {questionId: question.id}) }}">¿Cúal es tu experiencia?</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
 
+        </li>
+        {% else %}
+            <p>En breve recibirás algunas preguntas</p>
+        {% endfor %}
+    </ul>
 
-
-    <h3>Experiencies libres</h3>
+    <h3>Experiencias libres</h3>
     <ul>
         {% for freeExperience in freeExperiences %}
             <li><a href="{{ path('mad_experience_read_experience', {experienceId : freeExperience.id}) }}">{{ freeExperience.account }}</a> en {{ freeExperience.createdAt | date('m/d/Y') }}</li>

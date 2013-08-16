@@ -49,7 +49,7 @@ security:
             anonymous: ~
 
     access_control:
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/mi-espacio, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
@@ -57,5 +57,4 @@ security:
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/investigacion, role: [ROLE_ADMIN, ROLE_RESEARCHER] }
-#        - { path: ^/admin/, role: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
