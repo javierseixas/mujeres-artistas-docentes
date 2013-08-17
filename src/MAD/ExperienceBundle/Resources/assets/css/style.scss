@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'blokletters_balpen';
+  src: url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.eot');
+  src: url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.woff') format('woff'),
+  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.ttf') format('truetype'),
+  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.svg#blokletters_balpenbalpen') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'blokletters_potlood';
+  src: url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.eot');
+  src: url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.woff') format('woff'),
+  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.ttf') format('truetype'),
+  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.svg#blokletters_potloodpotlood') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'blokletters_viltstif';
+  src: url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.eot');
+  src: url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.woff') format('woff'),
+  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.ttf') format('truetype'),
+  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.svg#blokletters_viltstifviltstift') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.general-container {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-family: blokletters_viltstif;
+  padding: .5em 0;
+  font-size: 33px;
+}
+
+.home-introduction {
+  margin-bottom: 20px;
+
+  h2 {
+    color: #333333;
+    font-size: 25px;
+    font-family: blokletters_balpen;
+  }
+}
+
+.home-decoration {
+  text-align: right;
+  font-size: 22px;
+}
+
+.home-menu {
+
+  list-style: none;
+  font-size: 18px;
+
+  li {
+    margin: 16px 0;
+
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

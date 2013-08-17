@@ -1,14 +1,32 @@
 {% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
 
-{% block content %}
-<ul>
-    <li><a href="#">Información</a></li>
-    <li><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Mis experiencias</a></li>
-    <li><a href="#">Experiencias compartidas</a></li>
-    <li><a href="#">Foro</a></li>
+{% block title %}Mi Espacio | Mujeres Artistas Docentes{% endblock %}
 
-    {% if is_granted('ROLE_RESEARCHER') %}
-    <li><a href="{{ path('mad_experience_ask_experience') }}" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
-    {%  endif %}
-</ul>
+{% block content %}
+
+<div class="row home-introduction">
+    <div class="span12">
+        <h1>¡Bienvenida a nuestro espacio de investigación!</h1>
+        <h2>A través de estas secciones podremos compartir nuestras experiencias, reflexionar y dialogar sobre nuestros tránsitos como mujeres artistas y docentes.</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 home-decoration">
+        <p></p>
+        <div><img src="{{ asset('bundles/madexperience/images/dani_small.jpg') }}" /></div>
+    </div>
+    <div class="span6">
+        <h3>¿Qué deseas hacer?</h3>
+        <ul class="home-menu">
+            <li><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Escribir y compartir experiencias</a></li>
+            <li><a href="#">Leer experiencias compartidas</a></li>
+            <li><a href="#">Foro de reflexión y discusión</a></li>
+            <li><a href="#">Información sobre la investigación</a></li>
+            {% if is_granted('ROLE_RESEARCHER') %}
+                <li><a href="{{ path('mad_experience_ask_experience') }}" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
+            {%  endif %}
+        </ul>
+    </div>
+</div>
+
 {% endblock content %}
