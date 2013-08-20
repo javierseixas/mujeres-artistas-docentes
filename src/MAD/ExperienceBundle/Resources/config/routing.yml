@@ -22,3 +22,7 @@ mad_experience_ask_experience:
 mad_experience_answer_question:
     pattern:  /mis-experiencias/responder/{questionId}
     defaults: { _controller: MADExperienceBundle:GatheringPlace:answerQuestion }
+
+mad_experience_ajax_upload_image:
+    pattern:  /ajax/upload-image
+    defaults: { _controller: MADExperienceBundle:Ajax:uploadImage }

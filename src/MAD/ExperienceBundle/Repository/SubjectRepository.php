@@ -9,12 +9,11 @@ class SubjectRepository extends EntityRepository
     public function findSubjectQuestionsAndAnswersByUser($userId)
     {
         $qb = $this->_em->createQueryBuilder();
-        $qb->select('s, q, e')
+        $qb->select('s, q, e, u')
             ->from('MADExperienceBundle:Subject','s')
             ->innerJoin('s.questions','q')
             ->leftJoin('q.experiences','e')
-            ->where($qb->expr()->eq('e.user', ':userId'))
-            ->orWhere($qb->expr()->isNull('e.user'))
+            ->leftJoin('e.user', 'u', 'WITH', 'u.id = :userId')
             ->setParameter('userId', $userId);
         ;
 
