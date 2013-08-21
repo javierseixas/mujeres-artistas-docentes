@@ -38,12 +38,14 @@ class ExperienceRepository extends EntityRepository
 
     }
 
-    public function findFreeExperiences()
+    public function findSharedFreeExperiences()
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('e')
             ->from('MADExperienceBundle:Experience','e')
             ->where($qb->expr()->isNull('e.question'))
+            ->andWhere($qb->expr()->eq('e.sharedWithAll', ':sharedWithAll'))
+            ->setParameter('sharedWithAll', true);
         ;
 
         $query = $qb->getQuery();

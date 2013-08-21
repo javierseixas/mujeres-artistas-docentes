@@ -26,3 +26,7 @@ mad_experience_answer_question:
 mad_experience_ajax_upload_image:
     pattern:  /ajax/upload-image
     defaults: { _controller: MADExperienceBundle:Ajax:uploadImage }
+
+mad_experience_shared_experiences:
+    pattern:  /experiencias-compartidas
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:list }

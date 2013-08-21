@@ -19,7 +19,7 @@
         <h3>¿Qué deseas hacer?</h3>
         <ul class="home-menu">
             <li><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Escribir y compartir experiencias</a></li>
-            <li><a href="#">Leer experiencias compartidas</a></li>
+            <li><a href="{{ path('mad_experience_shared_experiences') }}">Leer experiencias compartidas</a></li>
             <li><a href="#">Foro de reflexión y discusión</a></li>
             <li><a href="#">Información sobre la investigación</a></li>
             {% if is_granted('ROLE_RESEARCHER') %}

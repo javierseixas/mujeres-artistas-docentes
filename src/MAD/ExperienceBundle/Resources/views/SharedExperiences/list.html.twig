@@ -1,0 +1,48 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Experiencias Compartidas | Mujeres Artistas Docentes{% endblock %}
+
+{% block content %}
+
+    <h1>Mis Experiencias</h1>
+
+
+    <div class="row">
+        <div class="span12">
+            <h3>Experiencias para la investigación</h3>
+            <ul class="investigation-experiences">
+                {% for subject in subjectsList %}
+                    <li><h4>{{ subject.title }}</h4>
+                        <ul>
+                            {% for question in subject.questions %}
+                                {% for experience in question.experiences %}
+                                    <li>{{ question.title }} por {{ experience.user.username }} en {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : experience.id}) }}">Leer</a></li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+
+                    </li>
+                {% else %}
+                    <p>Aún no hay experiencias compartidas sobre las preguntas de la investigación</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <h3>Experiencias libres</h3>
+        </div>
+        <div class="span12">
+            <ul class="investigation-experiences">
+                {% for freeExperience in freeExperiences %}
+                    <li><a href="{{ path('mad_experience_read_experience', {experienceId : freeExperience.id}) }}">{{ freeExperience.account }}</a> en {{ freeExperience.createdAt | date('m/d/Y') }}</li>
+                {% else %}
+                    <li>No hay experiencias libres compartidas.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock content %}
