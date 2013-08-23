@@ -3,22 +3,25 @@
 namespace MAD\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
  */
 class User extends BaseUser
 {
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $experiences;
+
+
     public function __construct()
     {
         parent::__construct();
-        // your own logic
-    }
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $experiences;
+        $this->experiences = new ArrayCollection();
+    }
 
     /**
      * Add experiences
@@ -46,7 +49,7 @@ class User extends BaseUser
     /**
      * Get experiences
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getExperiences()
     {

@@ -7,6 +7,17 @@ MAD\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    manyToMany:
+      groups:
+        targetEntity: Group
+        joinTable:
+          name: users_groups
+          joinColumns:
+            user_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            group_id:
+              referencedColumnName: id
     oneToMany:
         experiences:
             targetEntity: MAD\ExperienceBundle\Entity\Experience
