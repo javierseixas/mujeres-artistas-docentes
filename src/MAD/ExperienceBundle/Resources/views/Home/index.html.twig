@@ -21,7 +21,7 @@
             <li><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Escribir y compartir experiencias</a></li>
             <li><a href="{{ path('mad_experience_shared_experiences') }}">Leer experiencias compartidas</a></li>
             <li><a href="#">Foro de reflexión y discusión</a></li>
-            <li><a href="#">Información sobre la investigación</a></li>
+            <li><a href="{{ path('mad_experience_investigation_index') }}">Información sobre la investigación</a></li>
             {% if is_granted('ROLE_RESEARCHER') %}
                 <li><a href="{{ path('mad_experience_ask_experience') }}" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
             {%  endif %}

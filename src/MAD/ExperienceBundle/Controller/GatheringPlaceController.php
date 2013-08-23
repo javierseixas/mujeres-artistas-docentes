@@ -6,7 +6,8 @@ use MAD\ExperienceBundle\Entity\Question;
 use MAD\ExperienceBundle\Form\Type\QuestionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MAD\ExperienceBundle\Entity\Experience;
-use MAD\ExperienceBundle\Form\Type\ExperienceType;;
+use MAD\ExperienceBundle\Form\Type\ExperienceType;
+use Symfony\Component\HttpFoundation\Request;
 
 class GatheringPlaceController extends Controller
 {
@@ -37,14 +38,12 @@ class GatheringPlaceController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function writeExperienceAction()
+    public function writeExperienceAction(Request $request)
     {
     	$experience = new Experience();
         $experience->setUser($this->get('security.context')->getToken()->getUser());
 
     	$form = $this->createForm(new ExperienceType(), $experience);
-
-        $request = $this->getRequest();
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -82,7 +81,7 @@ class GatheringPlaceController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws AccessDeniedException
      */
-    public function askExperienceAction()
+    public function askExperienceAction(Request $request)
     {
         if (false === $this->get('security.context')->isGranted('ROLE_RESEARCHER')) {
             throw new AccessDeniedException();
@@ -91,8 +90,6 @@ class GatheringPlaceController extends Controller
         $question = new Question();
 
         $form = $this->createForm(new QuestionType(), $question);
-
-        $request = $this->getRequest();
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -108,7 +105,6 @@ class GatheringPlaceController extends Controller
                 );
 
                 $teachers = $this->getDoctrine()->getRepository('MADUserBundle:User')->findUserByRole('ROLE_TEACHER');
-
 
                 foreach ($teachers as $teacher) {
                     $message = \Swift_Message::newInstance()
@@ -142,7 +138,7 @@ class GatheringPlaceController extends Controller
      * @param integer $questionId
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function answerQuestionAction($questionId)
+    public function answerQuestionAction($questionId, Request $request)
     {
         $question = $this->getDoctrine()->getRepository('MADExperienceBundle:Question')->find($questionId);
 
@@ -151,8 +147,6 @@ class GatheringPlaceController extends Controller
         $experience->setUser($this->get('security.context')->getToken()->getUser());
 
         $form = $this->createForm(new ExperienceType(), $experience);
-
-        $request = $this->getRequest();
 
         if ($request->isMethod('POST')) {
             $form->submit($request);

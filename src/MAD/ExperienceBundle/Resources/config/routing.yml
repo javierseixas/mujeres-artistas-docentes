@@ -14,7 +14,6 @@ mad_experience_read_experience:
     pattern:  /mis-experiencias/leer/{experienceId}
     defaults: { _controller: MADExperienceBundle:GatheringPlace:readExperience }
 
-
 mad_experience_ask_experience:
     pattern:  /investigacion/preguntar
     defaults: { _controller: MADExperienceBundle:GatheringPlace:askExperience }
@@ -30,3 +29,26 @@ mad_experience_ajax_upload_image:
 mad_experience_shared_experiences:
     pattern:  /experiencias-compartidas
     defaults: { _controller: MADExperienceBundle:SharedExperiences:list }
+
+
+#Invetigation
+
+mad_experience_investigation_index:
+    pattern:  /investigacion
+    defaults: { _controller: MADExperienceBundle:Investigation:index }
+
+mad_experience_investigation_project:
+    pattern:  /investigation/proyecto
+    defaults: { _controller: MADExperienceBundle:Investigation:project }
+
+mad_experience_investigation_feminism:
+    pattern:  /investigation/teorias-feministas
+    defaults: { _controller: MADExperienceBundle:Investigation:feminism }
+
+mad_experience_investigation_narrative:
+    pattern:  /investigation/narrativa
+    defaults: { _controller: MADExperienceBundle:Investigation:narrative }
+
+mad_experience_investigation_other:
+    pattern:  /investigation/otros-temas-interes
+    defaults: { _controller: MADExperienceBundle:Investigation:otherSubjects }
