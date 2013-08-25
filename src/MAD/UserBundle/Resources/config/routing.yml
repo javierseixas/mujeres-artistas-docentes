@@ -25,6 +25,14 @@ mad_user_edit_picture:
     pattern: /foto-perfil
     defaults: { _controller: MADUserBundle:Profile:editPicture }
 
+mad_user_upload_avatar_preview:
+    pattern: /ajax/upload-avatar-preview
+    defaults: { _controller: MADUserBundle:Crop:uploadAvatarPreview }
+
+mad_user_upload_cropped_avatar:
+    pattern: /upload-cropped-avatar
+    defaults: { _controller: MADUserBundle:Crop:uploadCroppedAvatar }
+
 fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group

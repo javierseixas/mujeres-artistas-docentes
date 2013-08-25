@@ -16,6 +16,7 @@ MAD\UserBundle\Entity\User:
         passwordChanged:
             type: boolean
             column: password_changed
+            nullable: true
     manyToMany:
       groups:
         targetEntity: Group
