@@ -36,3 +36,7 @@ mad_user_upload_cropped_avatar:
 fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group
+
+_imagine:
+    resource: .
+    type:     imagine

@@ -76,3 +76,10 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
+
+liip_imagine:
+    filter_sets:
+        resized_avatar:
+            filters:
+                relative_resize: { widen: 800 }
+

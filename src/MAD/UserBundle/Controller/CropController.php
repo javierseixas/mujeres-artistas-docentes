@@ -11,7 +11,10 @@ class CropController extends Controller
 {
     public function uploadCroppedAvatarAction()
     {
-        $path = __DIR__ . '/../../../../web/uploads/avatars/previews/';
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $path = __DIR__ . '/../../../../web/media/cache/resized_avatar/uploads/avatars/previews/';
+//        $path = __DIR__ . '/../../../../web/uploads/avatars/previews/';
         $newImagePath = __DIR__ . '/../../../../web/uploads/avatars/';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -26,8 +29,7 @@ class CropController extends Controller
             imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'],
                 $targ_w,$targ_h,$_POST['w'],$_POST['h']);
 
-            header('Content-type: image/jpeg');
-            imagejpeg($dst_r, $newImagePath.'prova.jpg',$jpeg_quality);
+            imagejpeg($dst_r, $newImagePath.$user->getUsername().'.jpg',$jpeg_quality);
 
             return $this->redirect($this->generateUrl('mad_experience_homepage'));
         }
@@ -37,7 +39,7 @@ class CropController extends Controller
     public function uploadAvatarPreviewAction()
     {
         $path = __DIR__ . '/../../../../web/uploads/avatars/previews/';
-        $valid_formats = array("jpg", "png", "gif", "bmp");
+        $valid_formats = array("jpg", "jpeg");
         if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
         {
             $name = $_FILES['photoimg']['name'];
@@ -51,8 +53,21 @@ class CropController extends Controller
                         $tmp = $_FILES['photoimg']['tmp_name'];
                         if(move_uploaded_file($tmp, $path.$actual_image_name))
                         {
-                            // TODO resize de picture
-                            $result = "<img src='/uploads/avatars/previews/".$actual_image_name."' id='preview-avatar'  class='preview'>";
+
+                            $imagemanagerResponse = $this->container
+                                ->get('liip_imagine.controller')
+                                ->filterAction(
+                                    $this->getRequest(),
+                                    'uploads/avatars/previews/'.$actual_image_name,      // original image you want to apply a filter to
+                                    'resized_avatar'              // filter defined in config.yml
+                                );
+
+                            $cacheManager = $this->container->get('liip_imagine.cache.manager');
+                            $srcPath = $cacheManager->getBrowserPath('uploads/avatars/previews/'.$actual_image_name, 'resized_avatar');
+
+                            $result = "<img src='".$srcPath."' id='preview-avatar'  class='preview' />";
+//                            $result = "<img src='/uploads/avatars/previews/".$actual_image_name."' id='preview-avatar'  class='preview'>";
+
                         }
                         else
                             $result = "failed";
