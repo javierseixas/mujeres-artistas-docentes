@@ -7,6 +7,15 @@ MAD\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+
+    fields:
+        picture:
+            type: string
+            lenght: 40
+            nullable: true
+        passwordChanged:
+            type: boolean
+            column: password_changed
     manyToMany:
       groups:
         targetEntity: Group

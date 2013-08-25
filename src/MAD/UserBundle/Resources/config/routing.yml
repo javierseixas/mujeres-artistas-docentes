@@ -21,6 +21,10 @@ mad_user_login:
     pattern: /
     defaults: { _controller: FOSUserBundle:Security:login }
 
+mad_user_edit_picture:
+    pattern: /foto-perfil
+    defaults: { _controller: MADUserBundle:Profile:editPicture }
+
 fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group

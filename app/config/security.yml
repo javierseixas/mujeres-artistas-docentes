@@ -41,6 +41,7 @@ security:
                 check_path: /login_check
                 login_path: /login
                 provider: fos_userbundle
+                success_handler: mad_user.authentication.handler.first_pwd_change_handler
                 default_target_path: /mi-espacio
                 csrf_provider: form.csrf_provider
             logout:
@@ -54,6 +55,7 @@ security:
         - { path: ^/investigacion, role: [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_ADMIN, ROLE_RESEARCHER] }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/mi-espacio, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
+        - { path: ^/profile, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/mis-experiencias, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER] }

@@ -1,7 +1,9 @@
 parameters:
-#    mad_user.example.class: MAD\UserBundle\Example
+    mad_user.authentication.handler.first_pwd_change_handler.class: MAD\UserBundle\Security\Authentication\Handler\FirstPasswordChangeHandler
 
 services:
-#    mad_user.example:
-#        class: %mad_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    mad_user.authentication.handler.first_pwd_change_handler:
+        class:  %mad_user.authentication.handler.first_pwd_change_handler.class%
+        arguments:  [@router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

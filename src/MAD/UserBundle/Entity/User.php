@@ -11,6 +11,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User extends BaseUser
 {
     /**
+     * @var string
+     */
+    private $picture;
+
+    /**
+     * @var boolean
+     */
+    private $passwordChanged;
+
+    /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $experiences;
@@ -55,4 +65,51 @@ class User extends BaseUser
     {
         return $this->experiences;
     }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set passwordChanged
+     *
+     * @param boolean $passwordChanged
+     * @return User
+     */
+    public function setPasswordChanged($passwordChanged)
+    {
+        $this->passwordChanged = $passwordChanged;
+    
+        return $this;
+    }
+
+    /**
+     * Get passwordChanged
+     *
+     * @return boolean 
+     */
+    public function getPasswordChanged()
+    {
+        return $this->passwordChanged;
+    }
+
 }
