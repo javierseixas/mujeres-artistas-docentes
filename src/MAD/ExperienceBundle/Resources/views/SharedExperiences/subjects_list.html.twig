@@ -4,31 +4,25 @@
 
 {% block content %}
 
-    <h1>Mis Experiencias</h1>
+    <h1>Experiencias Compartidas</h1>
 
 
     <div class="row">
         <div class="span12">
-            <h3>Experiencias para la investigación</h3>
-            <ul class="investigation-experiences">
+            <h3>Temas sobre las reflexiones</h3>
+        </div>
+        <div class="span4">
+            <ul class="subjects-main-list">
                 {% for subject in subjectsList %}
-                    <li><h4>{{ subject.title }}</h4>
-                        <ul>
-                            {% for question in subject.questions %}
-                                {% for experience in question.experiences %}
-                                    <li>{{ question.title }} por {{ experience.user.username }} en {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : experience.id}) }}">Leer</a></li>
-                                {% endfor %}
-                            {% endfor %}
-                        </ul>
-
-                    </li>
+                    <li><a href="{{ path('mad_experience_shared_experiences_experiences', { subjectId : subject.id }) }}">{{ subject.title }}</a></li>
                 {% else %}
-                    <p>Aún no hay experiencias compartidas sobre las preguntas de la investigación</p>
+                    <p>En breve se publicarán los temas.</p>
                 {% endfor %}
             </ul>
         </div>
 
     </div>
+
 
     <div class="row">
         <div class="span12">

@@ -1,10 +1,27 @@
 MAD\UserBundle\Entity\Group:
     type: entity
     table: groups
+    repositoryClass: MAD\UserBundle\Repository\GroupRepository
     fields:
         id:
             type: integer
             id: true
             generator:
                 strategy: AUTO
+    manyToMany:
+      questions:
+        targetEntity: MAD\ExperienceBundle\Entity\Question
+        inversedBy: groups
+        cascade: ['persist']
+        joinTable:
+          name: questions_groups
+          joinColumns:
+            group_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            question_id:
+              referencedColumnName: id
+      users:
+        targetEntity: MAD\UserBundle\Entity\User
+        mappedBy: groups
     lifecycleCallbacks: {  }

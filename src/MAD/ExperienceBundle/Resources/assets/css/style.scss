@@ -31,6 +31,12 @@
   font-style: normal;
 }
 
+$my-experiences-color: #E7D897;
+$shared-experiences-color: #A4DFC3;
+$forum-color: #FDC39D;
+$investigation-color: #ADD9F4;
+$default-color: #D2D0D1;
+
 .general-container {
   width: 95%;
   margin-left: auto;
@@ -94,5 +100,20 @@ h1 {
 
   h4 {
 
+  }
+}
+
+.subjects-main-list {
+  margin-left: 0;
+
+  li {
+    list-style: none outside;
+    margin: 10px;
+
+    a {
+      display: block;
+      padding: 10px;
+      background-color: #cfcfcf;
+    }
   }
 }

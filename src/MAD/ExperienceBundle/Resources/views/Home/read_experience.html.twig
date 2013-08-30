@@ -6,7 +6,7 @@
 
     <div>Por <i>nombre</i> en {{ experience.createdAt | date('d/m/Y') }}</div>
 
-    <div>{{ experience.account }}</div>
+    <div>{{ experience.account | raw }}</div>
 
 {% endblock content %}
 

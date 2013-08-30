@@ -9,25 +9,14 @@
 
 <div class="row">
     <div class="span12">
-        <h3>Experiencias para la investigación</h3>
-        <ul class="investigation-experiences">
+        <h3>Temas sobre las reflexiones</h3>
+    </div>
+    <div class="span4">
+        <ul class="subjects-main-list">
             {% for subject in subjectsList %}
-            <li><h4>{{ subject.title }}</h4>
-                <ul>
-                    {% for question in subject.questions %}
-                    <li>{{ question.title }}
-                        {% if question.experiences.current.user is not null %}
-                            por mi en {{ question.experiences.current.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : question.experiences.current.id}) }}">Leer</a>
-                        {% else %}
-                            <a href="{{ path('mad_experience_answer_question', {questionId: question.id}) }}">¿Cúal es tu experiencia?</a>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
-
-            </li>
+            <li><a href="{{ path('mad_experience_show_questions', { subjectId : subject.id }) }}">{{ subject.title }}</a></li>
             {% else %}
-                <p>En breve recibirás algunas preguntas</p>
+                <p>En breve se publicarán los temas.</p>
             {% endfor %}
         </ul>
     </div>
@@ -42,9 +31,10 @@
         <div><a href="{{  path('mad_experience_write_experience') }}">Escribir una experiencia</a></div>
     </div>
     <div class="span12">
+        <p>Si te apetece escribir sobre alguna experiencia que no aparece en los temas, puedes hacerlo en este apartado.</p>
         <ul class="investigation-experiences">
             {% for freeExperience in freeExperiences %}
-                <li><a href="{{ path('mad_experience_read_experience', {experienceId : freeExperience.id}) }}">{{ freeExperience.account }}</a> en {{ freeExperience.createdAt | date('m/d/Y') }}</li>
+                <li><a href="{{ path('mad_experience_read_experience', {experienceId : freeExperience.id}) }}">{{ freeExperience.account }}</a> en {{ freeExperience.createdAt | date('m/d/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : question.experiences.current.id}) }}">Leer</a> | <a href="{{ path('mad_experience_edit_experience', {experienceId : question.experiences.current.id}) }}">Editar</a></li>
             {% else %}
                 <li>No has escrito ninguna experiencia. <a href="{{  path('mad_experience_write_experience') }}">¿Quieres escribir alguna?</a></li>
             {% endfor %}

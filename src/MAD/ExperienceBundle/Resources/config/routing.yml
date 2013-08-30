@@ -6,9 +6,17 @@ mad_experience_my_experiences:
     pattern:  /mis-experiencias
     defaults: { _controller: MADExperienceBundle:GatheringPlace:myExperiences }
 
+mad_experience_show_questions:
+    pattern:  /mis-experiencias/preguntas/{subjectId}
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:showQuestions }
+
 mad_experience_write_experience:
     pattern:  /mis-experiencias/escribir
     defaults: { _controller: MADExperienceBundle:GatheringPlace:writeExperience }
+
+mad_experience_edit_experience:
+    pattern:  /mis-experiencias/editar/{experienceId}
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:editExperience }
 
 mad_experience_read_experience:
     pattern:  /mis-experiencias/leer/{experienceId}
@@ -29,6 +37,10 @@ mad_experience_ajax_upload_image:
 mad_experience_shared_experiences:
     pattern:  /experiencias-compartidas
     defaults: { _controller: MADExperienceBundle:SharedExperiences:list }
+
+mad_experience_shared_experiences_experiences:
+    pattern:  /experiencias-compartidas/experiencias/{subjectId}
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:showExperiences }
 
 
 #Invetigation
@@ -52,3 +64,8 @@ mad_experience_investigation_narrative:
 mad_experience_investigation_other:
     pattern:  /investigation/otros-temas-interes
     defaults: { _controller: MADExperienceBundle:Investigation:otherSubjects }
+
+
+mad_experience_set_groups:
+    pattern:  /set-groups
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:setGroups }

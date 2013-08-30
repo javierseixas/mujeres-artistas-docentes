@@ -40,11 +40,17 @@ class Question
     private $subject;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $groups;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -180,5 +186,43 @@ class Question
     public function getSubject()
     {
         return $this->subject;
+    }
+
+    /**
+     * Add groups
+     *
+     * @param \MAD\UserBundle\Entity\Group $group
+     * @return Question
+     */
+    public function addGroup(\MAD\UserBundle\Entity\Group $group)
+    {
+        $this->groups->add($group);
+        $group->addQuestion($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \MAD\UserBundle\Entity\Group $group
+     * @return Question
+     */
+    public function removeGroup(\MAD\UserBundle\Entity\Group $group)
+    {
+        $this->groups->removeElement($group);
+        $group->removeQuestion($this);
+
+        return $this;
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

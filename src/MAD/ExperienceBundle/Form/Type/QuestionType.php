@@ -17,6 +17,18 @@ class QuestionType extends AbstractType
             ))
             ->add('title', 'text', array('label' => 'Título'))
             ->add('wording', 'textarea', array('label' => 'Enunciado'))
+            ->add('groups', 'entity', array(
+                'label' => 'Grupos',
+                'class' => 'MADUserBundle:Group',
+                'property' => 'name',
+                'multiple' => true,
+                'query_builder' => function(EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('g');
+                    return $qb;
+//                        ->where($qb->expr()->like('u.roles', ':roleKey'))
+//                        ->setParameter('roleKey','%ROLE_TECHNICIAN%');
+                }
+            ))
             ;
     }
 

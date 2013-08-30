@@ -1,0 +1,30 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Mis Experiencias | Mujeres Artistas Docentes{% endblock %}
+
+{% block content %}
+
+<h1>Mis Experiencias</h1>
+
+
+<div class="row">
+    <div class="span12">
+        <h3>Experiencias sobre {{ subject.title }}</h3>
+        <ul class="investigation-experiences">
+            {% for question in experiences %}
+                <li>{{ question.title }}
+                    <ul>
+                        {% for experience in question.experiences %}
+                            <li>{{ question.title }} por {{ experience.user.username }} en {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : experience.id}) }}">Leer</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <p>No hay experiencias compartidas para esta pregunta</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endblock content %}

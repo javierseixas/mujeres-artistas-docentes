@@ -1,6 +1,7 @@
 MAD\ExperienceBundle\Entity\Question:
     type: entity
     table: questions
+    repositoryClass: MAD\ExperienceBundle\Repository\QuestionRepository
     fields:
         id:
             type: integer
@@ -33,4 +34,8 @@ MAD\ExperienceBundle\Entity\Question:
             targetEntity: MAD\ExperienceBundle\Entity\Experience
             mappedBy: question
             cascade: ["all"]
+    manyToMany:
+        groups:
+            targetEntity: MAD\UserBundle\Entity\Group
+            mappedBy: questions
     lifecycleCallbacks: { }

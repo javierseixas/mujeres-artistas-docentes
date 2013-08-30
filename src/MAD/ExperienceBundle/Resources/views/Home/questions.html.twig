@@ -1,0 +1,30 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Mis Experiencias | Mujeres Artistas Docentes{% endblock %}
+
+{% block content %}
+
+<h1>Mis Experiencias</h1>
+
+
+<div class="row">
+    <div class="span12">
+        <h3>Experiencias sobre {{ subject.title }}</h3>
+        <ul class="investigation-experiences">
+            {% for question in questions %}
+                <li>{{ question.title }}
+                    {% if question.experiences.current and question.experiences.current.user is not null %}
+                        por mi en {{ question.experiences.current.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_experience', {experienceId : question.experiences.current.id}) }}">Leer</a> | <a href="{{ path('mad_experience_edit_experience', {experienceId : question.experiences.current.id}) }}">Editar</a>
+                    {% else %}
+                        <a href="{{ path('mad_experience_answer_question', {questionId: question.id}) }}">¿Cúal es tu experiencia?</a>
+                    {% endif %}
+                </li>
+            {% else %}
+                <p>En breve recibirás algunas preguntas</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endblock content %}
