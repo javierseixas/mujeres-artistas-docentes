@@ -24,7 +24,7 @@ class QuestionRepository extends EntityRepository
         ;
 
         $query = $qb->getQuery();
-
+        $sql = $query->getSQL();
         return $query->getResult();
     }
 

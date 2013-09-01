@@ -4,7 +4,9 @@
     <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
     {% stylesheets  filter='compass,cssrewrite'
-    "@MADExperienceBundle/Resources/assets/css/*"
+    "@MADExperienceBundle/Resources/assets/css/fonts.scss"
+    "@MADExperienceBundle/Resources/assets/css/vars.scss"
+    "@MADExperienceBundle/Resources/assets/css/style.scss"
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -31,7 +33,7 @@
                     <!-- Everything you want hidden at 940px or less, place within here -->
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav">
-                            <li><a href="{{ path('mad_experience_my_experiences') }}">Mis experiencias</a></li>
+                            <li><a href="{{ path('mad_experience_my_experiences') }}">Escribir experiencias</a></li>
                             <li><a href="{{ path('mad_experience_shared_experiences') }}">Experiencias compartidas</a></li>
                             <li><a href="#">Foro de reflexión</a></li>
                             <li><a href="{{ path('mad_experience_investigation_index') }}">Sobre la investigación</a></li>
@@ -43,6 +45,8 @@
             </div>
         </div>
     {% endblock %}
+
+    {% block header %}{% endblock header %}
 
     <div class="general-container">
 

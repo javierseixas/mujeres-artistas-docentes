@@ -3,32 +3,32 @@ mad_experience_homepage:
     defaults: { _controller: MADExperienceBundle:GatheringPlace:home }
 
 mad_experience_my_experiences:
-    pattern:  /mis-experiencias
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:myExperiences }
+    pattern:  /escribir-experiencias
+    defaults: { _controller: MADExperienceBundle:MyExperiences:myExperiences }
 
 mad_experience_show_questions:
-    pattern:  /mis-experiencias/preguntas/{subjectId}
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:showQuestions }
+    pattern:  /escribir-experiencias/preguntas/{subjectId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:showQuestions }
 
 mad_experience_write_experience:
-    pattern:  /mis-experiencias/escribir
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:writeExperience }
+    pattern:  /escribir-experiencias/escribir
+    defaults: { _controller: MADExperienceBundle:MyExperiences:writeExperience }
 
 mad_experience_edit_experience:
-    pattern:  /mis-experiencias/editar/{experienceId}
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:editExperience }
+    pattern:  /escribir-experiencias/editar/{experienceId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:editExperience }
 
 mad_experience_read_experience:
-    pattern:  /mis-experiencias/leer/{experienceId}
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:readExperience }
+    pattern:  /escribir-experiencias/leer/{experienceId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:readExperience }
 
 mad_experience_ask_experience:
     pattern:  /investigacion/preguntar
     defaults: { _controller: MADExperienceBundle:GatheringPlace:askExperience }
 
 mad_experience_answer_question:
-    pattern:  /mis-experiencias/responder/{questionId}
-    defaults: { _controller: MADExperienceBundle:GatheringPlace:answerQuestion }
+    pattern:  /escribir-experiencias/responder/{questionId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:answerQuestion }
 
 mad_experience_ajax_upload_image:
     pattern:  /ajax/upload-image
@@ -69,3 +69,7 @@ mad_experience_investigation_other:
 mad_experience_set_groups:
     pattern:  /set-groups
     defaults: { _controller: MADExperienceBundle:GatheringPlace:setGroups }
+
+mad_experience_set_subjects:
+    pattern:  /set-subjects
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:setSubjects }

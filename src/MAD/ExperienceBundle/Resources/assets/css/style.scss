@@ -1,41 +1,133 @@
-@font-face {
-  font-family: 'blokletters_balpen';
-  src: url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.eot');
-  src: url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.woff') format('woff'),
-  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.ttf') format('truetype'),
-  url('/bundles/madexperience/fonts/Blokletters-Balpen-webfont.svg#blokletters_balpenbalpen') format('svg');
-  font-weight: normal;
-  font-style: normal;
+@import "fonts";
+@import "vars";
+
+
+@mixin block-list {
+  ul {
+    color: #000000;
+    text-decoration: none;
+    margin: 0;
+    list-style: none;
+    li {
+      margin: 0px 0px 16px 0;
+      a {
+        padding: 15px 15px 15px  25px;
+        display: block;
+        color: #000000;
+        text-decoration: none;
+        font-size: 17px;
+      }
+    }
+  }
 }
 
-@font-face {
-  font-family: 'blokletters_potlood';
-  src: url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.eot');
-  src: url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.woff') format('woff'),
-  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.ttf') format('truetype'),
-  url('/bundles/madexperience/fonts/Blokletters-Potlood-webfont.svg#blokletters_potloodpotlood') format('svg');
-  font-weight: normal;
-  font-style: normal;
+@mixin button-darken($color) {
+  background-color: darken($color, 9%);
 }
 
-@font-face {
-  font-family: 'blokletters_viltstif';
-  src: url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.eot');
-  src: url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.woff') format('woff'),
-  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.ttf') format('truetype'),
-  url('/bundles/madexperience/fonts/Blokletters-Viltstift-webfont.svg#blokletters_viltstifviltstift') format('svg');
-  font-weight: normal;
-  font-style: normal;
+h1 {
+  padding: .5em 0;
+  font-size: 33px;
 }
 
-$my-experiences-color: #E7D897;
-$shared-experiences-color: #A4DFC3;
-$forum-color: #FDC39D;
-$investigation-color: #ADD9F4;
-$default-color: #D2D0D1;
+h3 {
+  font-size: 28px;
+}
+
+h1, h2, h3 {
+  font-family: $font-reg;
+}
+
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+
+  h1 {
+    font-family: $font-reg;
+  }
+
+  h3 {
+    font-family: $font-reg;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 26px;
+  }
+}
+
+.home-header {
+  background: $default-color;
+}
+
+.my-exp-header {
+  background: $my-experiences-color;
+}
+
+.my-exp {
+  background-color: $my-experiences-color;
+}
+
+.my-exp:hover {
+  @include button-darken($my-experiences-color);
+}
+
+.shared-exp-header {
+  background-color: $shared-experiences-color;
+}
+
+.shared-exp {
+  background-color: $shared-experiences-color;
+}
+
+.shared-exp:hover {
+  @include button-darken($shared-experiences-color);
+}
+
+.forum {
+  background-color: $forum-color;
+}
+
+.forum:hover {
+  @include button-darken($forum-color);
+}
+
+.invest {
+  background-color: $investigation-color;
+}
+
+.invest:hover {
+  @include button-darken($investigation-color);
+}
+
+.investigation-header {
+  background-color: $investigation-color;
+}
+
+.neutral {
+  background-color: $default-color;
+}
+
+.neutral:hover {
+  @include button-darken($default-color);
+}
+
+.admin {
+  background-color: $default-color;
+}
+
+.admin:hover {
+  @include button-darken($default-color);
+}
+
+.home-intro {
+  background-color: $default-color;
+  padding: 15px;
+  text-align: center;
+
+  p {
+    font-size: 20px;
+    line-height: 27px;
+  }
+}
 
 .general-container {
   width: 95%;
@@ -43,42 +135,26 @@ $default-color: #D2D0D1;
   margin-right: auto;
 }
 
-h1 {
-  font-family: blokletters_viltstif;
-  padding: .5em 0;
-  font-size: 33px;
-}
-
-.home-introduction {
-  margin-bottom: 20px;
-
-  h2 {
-    color: #333333;
-    font-size: 25px;
-    font-family: blokletters_balpen;
-  }
-}
-
-.home-decoration {
-  text-align: right;
-  font-size: 22px;
+.section-title {
+  
 }
 
 .home-menu {
+  @include block-list;
+}
 
-  list-style: none;
-  font-size: 18px;
-
+ul.shared-exp-list {
   li {
-    margin: 16px 0;
-
-    a {
-      color: #000000;
-      text-decoration: none;
+    h4 {
+      font-family: $font-reg;
+      margin-top: 28px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    ul {
+      margin-left: 20px;
+      li {
+        margin: 14px;
+      }
     }
   }
 }
@@ -104,16 +180,93 @@ h1 {
 }
 
 .subjects-main-list {
-  margin-left: 0;
+  @include block-list;
+}
 
-  li {
-    list-style: none outside;
-    margin: 10px;
+.h3-button {
+  margin-top: 13px;
+}
 
-    a {
-      display: block;
-      padding: 10px;
-      background-color: #cfcfcf;
+.only-text {
+  width: 95%;
+  margin: 0 auto;
+
+  h1, a {
+    display: inline-block;
+  }
+
+  a {
+    color: #222222;
+    font-style: italic;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 20px;
+    padding: 0;
+  }
+}
+
+.questions-list {
+  @include block-list;
+
+  ul {
+
+    li {
+      padding: 15px 15px 15px 25px;
+      font-size: 18px;
+
+      a {
+        display: inline;
+        color: #ffffff;
+        padding: inherit;
+        padding: 4px 12px;
+        font-size: 14px;
+      }
+
+      span {
+        line-height: 30px;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+
+        a {
+          font-size: 12px;
+          display: inline;
+          padding: 0;
+          font-style: none;
+          color: #0044cc;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+    li:hover {
+      background-color: $default-color;
+    }
+  }
+}
+
+.signature {
+  font-size: 12px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.references {
+  margin-top: 30px;
+
+  ul {
+    margin: 0;
+
+    li {
+      list-style: none;
+      margin: 20px 0;
     }
   }
 }

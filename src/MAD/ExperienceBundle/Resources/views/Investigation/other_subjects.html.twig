@@ -2,16 +2,15 @@
 
 {% block title %}La investigación | Mujeres Artistas Docentes{% endblock %}
 
+{% block header %}
+    <div class="row-fluid investigation-header">
+        <div class="span12"><div class="only-text"><h1 class="">Sobre la investigación</h1></div></div>
+    </div>
+{% endblock header %}
+
 {% block content %}
 
 <div class="row">
-    <div class="span12">
-        <ul class="breadcrumb">
-            <li><a href="{{ path('mad_experience_homepage') }}">Mi espacio</a> <span class="divider">/</span></li>
-            <li><a href="{{ path('mad_experience_investigation_index') }}">Investigación</a> <span class="divider">/</span></li>
-            <li class="active">Otros temas de interés y relacionados con la investigación</li>
-        </ul>
-    </div>
     <div class="span12">
         <h2>Otros temas de interés y relacionados con la investigación</h2>
         <h3>¿Cómo construimos nuestra identidad como docentes?</h3>
@@ -27,7 +26,8 @@
         <p>Observo dos formas que pueden ayudarnos a practicar la reflexividad de manera cotidiana en nuestra labor como docentes. La primera y más importante es ser conscientes de nuestro rol y nuestra forma de estar en la escuela. Esto implica en primer lugar preguntarnos por quiénes somos y cómo somos, para que desde este lugar seamos docentes perceptibles. Es decir, que desde nuestra posición como mujeres docentes estemos abiertas a escuchar lo que sucede a nuestro alrededor para ser conscientes de  ello, y comprender qué nos ocurre a nosotros con esas experiencias. A medida que estamos despiertas ante lo que nos rodea, nos damos cuenta que somos parte de ello y que por ende, podemos cuestionarlo. Estar conscientes de lo que decimos, lo que enseñamos y cómo lo enseñamos nos permite preguntarnos por nuestra práctica y poder mejorarla.</p>
         <p>Por último,  además de desarrollar la reflexividad desde el acto de ser conscientes y perceptibles, creo importante poder compartir estas experiencias con otros. Hablar con los compañeros sobre lo que hacemos como docentes, compartir dudas, frustraciones, proyectos, cómo nos sentimos y qué pensamos, nos ayuda a verbalizar y generar un conocimiento sobre nuestra práctica. Al mismo tiempo, compartir estas experiencias nos permite escucharnos a nosotras mismas y cuestionarnos para buscar nuevas estrategias y metodologías.</p>
         <p>Desde estos dos caminos invito a que activamente podamos enfrentar nuestra labor docente con una actitud crítica y reflexiva, que nos permita ser consciente de las decisiones que tomamos y ser ejemplo de ello para nuestros estudiantes.</p>
-        <div>
+
+        <div class="references well">
             <h4>Referencias</h4>
             <ul>
                 <li>Beijaard, D., Verloop, N., & Vermunt, J. D. (2000). Teachers’ perceptions of professional identity: An exploratory study from a personal knowledge perspective. <i>Teaching and Teacher Education</i>. 16, 749–764.</li>

@@ -1,12 +1,18 @@
 {% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
 
+{% block header %}
+    <div class="row-fluid my-exp-header">
+        <div class="span12"><div class=" only-text"><h1 class="">Escribir experiencias</h1> <a href="{{ path('mad_experience_show_questions', {subjectId : question.subject.id}) }}">{{ question.subject.title }} >></a></div></div>
+    </div>
+{% endblock header %}
+
 {% block content %}
 
 <div class="row">
 
     <div class="span12">
 
-    <h3>Escribir experiencia sobre {{ question.title }}</h3>
+    <h3>{% block form_title %}{% endblock form_title %}</h3>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-notice">
@@ -22,23 +28,14 @@
     <div class="span12">
         <h4>{{ question.title }}</h4>
         <div class="well well-large">
-            {{ question.wording }}
+            {{ question.wording | raw }}
         </div>
     </div>
 </div>
 
 <div class="row">
     <div class="span12">
-        <form action="{{ path('mad_experience_answer_question', {questionId:question.id}) }}" method="post" {{ form_enctype(form) }}>
-            <div style="margin: 10px 0;">
-                {{ form_label(form.account) }}
-                {{ form_errors(form.account) }}
-                {{ form_widget(form.account) }}
-            </div>
-            {{ form_rest(form) }}
-            <input type="submit" class="btn btn-primary" value="Guardar y compartir con Ross" name="share" />
-            <input type="submit" class="btn" value="Guardar y compartir con todas" name="share" />
-        </form>
+        {% block form %}{% endblock form %}
     </div>
 </div>
 

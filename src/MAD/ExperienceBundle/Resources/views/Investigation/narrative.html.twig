@@ -2,16 +2,15 @@
 
 {% block title %}La investigación | Mujeres Artistas Docentes{% endblock %}
 
+{% block header %}
+    <div class="row-fluid investigation-header">
+        <div class="span12"><div class="only-text"><h1 class="">Sobre la investigación</h1></div></div>
+    </div>
+{% endblock header %}
+
 {% block content %}
 
 <div class="row">
-    <div class="span12">
-        <ul class="breadcrumb">
-            <li><a href="{{ path('mad_experience_homepage') }}">Mi espacio</a> <span class="divider">/</span></li>
-            <li><a href="{{ path('mad_experience_investigation_index') }}">Investigación</a> <span class="divider">/</span></li>
-            <li class="active">La Narrativa</li>
-        </ul>
-    </div>
     <div class="span12">
         <h2>La Narrativa</h2>
         <h3>¿Qué significa narrar-nos y cuál es su importancia en mi investigación?</h3>
@@ -20,7 +19,7 @@
         <p>Desde este interés por la narrativa como método para conocernos, para mí es fundamental preguntarme <strong>¿qué significa para ustedes relatar sus propias experiencias?</strong> Busco abrir un espacio de re-interpretación desde la narrativa y el acto de relatarse, como estrategias que permiten dar nuevos significados a nuestras experiencias (Bruner, 2004; Candinin y Conelly, 1990, 1994, 1995, 2000; Goodson, 2010).</p>
         <p>Este espacio narrativo permitirá reflexionar cómo van conformando constantemente sus identidades, desde el tránsito entre sus roles como artistas y docentes. La noción de identidad será abordada desde el proceso narrativo de contarse y cómo desde este acto reflexivo vamos conformando nuestra identidad personal y concepto del yo (Somers, 1994; Soreide, 2007; Clandinin et al, 2006).</p>
 
-        <div>
+        <div class="references well">
             <h4>Referencias</h4>
             <ul>
                 <li>Bolívar, A. (2002). “¿De nobis ipsis silemus?”: Epistemología de la investigación biográfico-narrativa en educación. Revista Electrónica de Investigación Educativa, Vol. 4, No. 1, 1-26. </li>

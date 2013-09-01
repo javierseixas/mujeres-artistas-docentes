@@ -2,19 +2,20 @@
 
 {% block title %}Experiencias Compartidas | Mujeres Artistas Docentes{% endblock %}
 
+{% block header %}
+    {% include 'MADExperienceBundle:Headers:shared_exp.html.twig' %}
+{% endblock header %}
+
 {% block content %}
-
-    <h1>Experiencias Compartidas</h1>
-
 
     <div class="row">
         <div class="span12">
-            <h3>Temas sobre las reflexiones</h3>
+            <h3>Temas de reflexión</h3>
         </div>
-        <div class="span4">
-            <ul class="subjects-main-list">
+        <div class="span4 subjects-main-list">
+            <ul class="">
                 {% for subject in subjectsList %}
-                    <li><a href="{{ path('mad_experience_shared_experiences_experiences', { subjectId : subject.id }) }}">{{ subject.title }}</a></li>
+                    <li class="neutral"><a href="{{ path('mad_experience_shared_experiences_experiences', { subjectId : subject.id }) }}">{{ subject.title }}</a></li>
                 {% else %}
                     <p>En breve se publicarán los temas.</p>
                 {% endfor %}
@@ -23,20 +24,5 @@
 
     </div>
 
-
-    <div class="row">
-        <div class="span12">
-            <h3>Experiencias libres</h3>
-        </div>
-        <div class="span12">
-            <ul class="investigation-experiences">
-                {% for freeExperience in freeExperiences %}
-                    <li><a href="{{ path('mad_experience_read_experience', {experienceId : freeExperience.id}) }}">{{ freeExperience.account }}</a> en {{ freeExperience.createdAt | date('m/d/Y') }}</li>
-                {% else %}
-                    <li>No hay experiencias libres compartidas.</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
 
 {% endblock content %}
