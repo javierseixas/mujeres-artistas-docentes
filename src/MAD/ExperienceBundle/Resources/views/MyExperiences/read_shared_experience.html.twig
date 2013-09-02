@@ -1,0 +1,9 @@
+{% extends "MADExperienceBundle:MyExperiences:read_experience_template.html.twig" %}
+
+{% block header %}
+    <div class="row-fluid my-exp-header">
+        <div class="span12"><div class=" only-text"><h1 class="">Ver experiencias compartidas</h1> <a href="{{ path('mad_experience_shared_experiences_experiences', {subjectId : experience.question.subject.id}) }}">{{ experience.question.subject.title }} >></a></div></div>
+    </div>
+{% endblock header %}
+
+

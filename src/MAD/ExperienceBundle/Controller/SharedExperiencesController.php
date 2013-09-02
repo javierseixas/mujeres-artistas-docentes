@@ -33,4 +33,16 @@ class SharedExperiencesController extends Controller
         ));
 
     }
+
+    public function readExperienceAction($experienceId)
+    {
+        // TODO Check if current user is researcher or if experience is shared with all
+
+        $experience = $this->getDoctrine()->getRepository('MADExperienceBundle:Experience')->find($experienceId);
+
+        return $this->render('MADExperienceBundle:MyExperiences:read_shared_experience.html.twig', array(
+            'experience' => $experience,
+        ));
+
+    }
 }

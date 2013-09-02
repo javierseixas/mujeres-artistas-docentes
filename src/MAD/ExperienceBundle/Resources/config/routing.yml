@@ -42,6 +42,10 @@ mad_experience_shared_experiences_experiences:
     pattern:  /experiencias-compartidas/experiencias/{subjectId}
     defaults: { _controller: MADExperienceBundle:SharedExperiences:showExperiences }
 
+mad_experience_read_shared_experience:
+    pattern:  /experiencias-compartidas/leer/{experienceId}
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:readExperience }
+
 
 #Invetigation
 

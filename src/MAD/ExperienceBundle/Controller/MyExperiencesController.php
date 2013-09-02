@@ -111,7 +111,7 @@ class MyExperiencesController extends Controller
 
         $experience = $this->getDoctrine()->getRepository('MADExperienceBundle:Experience')->find($experienceId);
 
-        return $this->render('MADExperienceBundle:MyExperiences:read_experience.html.twig', array(
+        return $this->render('MADExperienceBundle:MyExperiences:read_my_experience.html.twig', array(
             'experience' => $experience,
         ));
 
