@@ -83,3 +83,9 @@ liip_imagine:
             filters:
                 relative_resize: { widen: 800 }
 
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: MAD\CommentBundle\Entity\Comment
+            thread: MAD\CommentBundle\Entity\Thread

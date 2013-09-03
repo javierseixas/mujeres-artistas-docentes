@@ -16,5 +16,10 @@
 
     <div>{{ experience.account | raw }}</div>
 
+
+    <div>
+        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
+    </div>
+
 {% endblock content %}
 

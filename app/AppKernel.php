@@ -21,6 +21,10 @@ class AppKernel extends Kernel
             new MAD\ExperienceBundle\MADExperienceBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new MAD\CommentBundle\MADCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
