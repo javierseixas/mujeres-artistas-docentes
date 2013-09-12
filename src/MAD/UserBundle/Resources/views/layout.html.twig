@@ -1,0 +1,21 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Mujeres Artistas Docentes | Login{% endblock title %}
+
+{% block nav %}
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+            <a class="brand" href="{{ path('mad_experience_homepage') }}">MujeresArtistasDocentes</a>
+            </div>
+        </div>
+    </div>
+{% endblock nav %}
+
+{% block header %}
+    {% include 'MADExperienceBundle:Headers:login.html.twig' %}
+{% endblock header %}
+
+{% block content %}
+	{{ block('fos_user_content')}}
+{% endblock content %}

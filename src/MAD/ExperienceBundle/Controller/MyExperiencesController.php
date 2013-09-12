@@ -63,6 +63,8 @@ class MyExperiencesController extends Controller
                     'notice',
                     'Experiencia guardada!'
                 );
+
+                $this->redirect($this->generateUrl('mad_experience_read_experience', array('experienceId' => $experience->getId())));
             }
         }
 

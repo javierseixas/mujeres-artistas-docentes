@@ -34,7 +34,7 @@ class FirstPasswordChangeHandler implements AuthenticationSuccessHandlerInterfac
             // redirect the user to where they were before the login process begun.
             $referer_url = $request->headers->get('referer');
 
-            $response = new RedirectResponse($referer_url);
+            $response = new RedirectResponse($this->router->generate('mad_experience_homepage'));
         } else {
             $response = new RedirectResponse($this->router->generate('mad_experience_homepage'));
         }

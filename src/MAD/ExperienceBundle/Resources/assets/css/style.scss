@@ -58,6 +58,10 @@ h1, h2, h3 {
   background: $default-color;
 }
 
+.neutral-box {
+  padding: 15px;
+}
+
 .my-exp-header {
   background: $my-experiences-color;
 }
@@ -269,4 +273,24 @@ ul.shared-exp-list {
       margin: 20px 0;
     }
   }
+}
+
+.login-signature {
+  background-color: $default-color;
+  padding: 15px;
+  text-align: center;
+
+  h1, h2 {
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.navbar-inverse .brand {
+  color: #ffffff;
 }

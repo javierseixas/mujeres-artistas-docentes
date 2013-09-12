@@ -65,7 +65,7 @@ class GatheringPlaceController extends Controller
                         )
                         ->setContentType("text/html")
                     ;
-                    $this->get('mailer')->send($message);
+                    //$this->get('mailer')->send($message);
                 }
 
             }
@@ -121,5 +121,13 @@ class GatheringPlaceController extends Controller
         $em->persist($subject);
 
         $em->flush();
+    }
+
+    private function getTeachers($groups)
+    {
+        $users = array();
+        foreach ($groups as $group) {
+        }
+
     }
 }

@@ -1,0 +1,48 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+<diV class="row-fluid">
+
+	<div class="span6 neutral-box neutral" style="min-height: 200px;">
+
+		<p style="margin-bottom: 30px;">Este espacio busca compartir experiencias, reflexiones y diálogos entorno a los tránsitos entre la práctica artística y docente de un grupo de mujeres chilenas.</p>
+		
+		{% if error %}
+		    <div class="alert alert-error">{{ error|trans }}</div>
+		{% endif %}
+		<form class="form-inline" action="{{ path("fos_user_security_check") }}" method="post">
+		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+		    <input type="text" id="username" name="_username" value="{{ last_username }}" class="input-small" placeholder="Usuaria" required="required" />
+
+		    <input type="password" id="password" class="input-small" name="_password" required="required" placeholder="Contraseña"/>
+
+		    
+		    <label class="checkbox" for="remember_me">
+		    <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}</label>
+
+		    <button class="btn" type="submit" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+		</form>
+	</div>
+
+	<div class="span6">
+		<div class="login-signature">
+			<h1>M. Rosario García-Huidobro Munita</h1>
+			<h2>Doctoranda<br/> Universitat de Barcelona</h2>
+		</div>
+		<div class="neutral-box neutral text-centered" style="margin-top: 15px;">
+			<a href="{{ path('mad_experience_investigation_index') }}">Conocer más de la investigación</a>
+		</div>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span4 offset8 neutral-box">
+		
+	</div>
+</div>
+
+{% endblock fos_user_content %}

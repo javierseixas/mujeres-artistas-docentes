@@ -14,7 +14,6 @@ class CropController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
 
         $path = __DIR__ . '/../../../../web/media/cache/resized_avatar/uploads/avatars/previews/';
-//        $path = __DIR__ . '/../../../../web/uploads/avatars/previews/';
         $newImagePath = __DIR__ . '/../../../../web/uploads/avatars/';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -30,6 +29,12 @@ class CropController extends Controller
                 $targ_w,$targ_h,$_POST['w'],$_POST['h']);
 
             imagejpeg($dst_r, $newImagePath.$user->getUsername().'.jpg',$jpeg_quality);
+
+            $user->setPicture($user->getUsername().'.jpg');
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             return $this->redirect($this->generateUrl('mad_experience_homepage'));
         }

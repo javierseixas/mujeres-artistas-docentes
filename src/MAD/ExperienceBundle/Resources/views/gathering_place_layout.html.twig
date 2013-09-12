@@ -16,6 +16,8 @@
 {% block body %}
 
     {% block nav %}
+    
+    {% if app.user %}
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">
                 <div class="container">
@@ -30,6 +32,12 @@
                     <!-- Be sure to leave the brand out there if you want it shown -->
                     <a class="brand" href="{{ path('mad_experience_homepage') }}">MujeresArtistasDocentes</a>
 
+                    <p class="navbar-text pull-right">
+                        {% if app.user.picture %}
+                        <img style="width: 32px; height: 32px;" src="/uploads/avatars/{{ app.user.picture }}" /> 
+                        {% endif %}{{ app.user.username }} | <a href="{{ path('fos_user_security_logout') }}">Salir</a>
+                    </p>
+
                     <!-- Everything you want hidden at 940px or less, place within here -->
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav">
@@ -37,14 +45,23 @@
                             <li><a href="{{ path('mad_experience_shared_experiences') }}">Experiencias compartidas</a></li>
                             <li><a href="#">Foro de reflexión</a></li>
                             <li><a href="{{ path('mad_experience_investigation_index') }}">Sobre la investigación</a></li>
-                            <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Salir</a></li>
                         </ul>
                     </div>
 
                 </div>
             </div>
         </div>
-    {% endblock %}
+        {% else %}
+
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                <a class="brand" href="{{ path('mad_experience_homepage') }}">MujeresArtistasDocentes</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endblock nav %}
 
     {% block header %}{% endblock header %}
 
