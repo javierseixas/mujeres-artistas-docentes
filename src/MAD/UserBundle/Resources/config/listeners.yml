@@ -1,0 +1,9 @@
+parameters:
+    mad_user.subscriber.first_pwd_change.class: MAD\UserBundle\EventListener\FirstPasswordChangeSubscriber
+
+services:
+    kernel.subscriber.first_pwd_change:
+        class: %mad_user.subscriber.first_pwd_change.class%
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_listener, event: fos_user.change_password.edit.success, method: onChangePassword, priority: 0 }

@@ -1,0 +1,18 @@
+{% extends "MADExperienceBundle:Forms:experience_form.html.twig" %}
+
+{% block title %}Escribir experiencia | Mujeres Artistas Docentes{% endblock %}
+
+{% block form_title %}Escribir experiencia{% endblock form_title %}
+
+{% block form %}
+<form action="{{ path('mad_experience_answer_question', {questionId:question.id}) }}" method="post" {{ form_enctype(form) }}>
+    <div style="margin: 10px 0;">
+        {{ form_label(form.account) }}
+        {{ form_errors(form.account) }}
+        {{ form_widget(form.account) }}
+    </div>
+    {{ form_rest(form) }}
+    <input type="submit" class="btn btn-primary" value="Guardar y compartir con Ross" name="share" />
+    <input type="submit" class="btn" value="Guardar y compartir con todas" name="share" />
+</form>
+{% endblock form %}

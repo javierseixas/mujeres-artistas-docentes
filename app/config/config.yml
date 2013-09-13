@@ -4,10 +4,11 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
@@ -30,7 +31,6 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -64,3 +64,28 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: MAD\UserBundle\Entity\User
+    group:
+        group_class: MAD\UserBundle\Entity\Group
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+
+liip_imagine:
+    filter_sets:
+        resized_avatar:
+            filters:
+                relative_resize: { widen: 800 }
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: MAD\CommentBundle\Entity\Comment
+            thread: MAD\CommentBundle\Entity\Thread

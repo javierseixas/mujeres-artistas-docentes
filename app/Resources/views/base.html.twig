@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Mujeres Artistas Docentes{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        {% block extra_stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
+        {% block extra_javascripts %}{% endblock %}
     </body>
 </html>

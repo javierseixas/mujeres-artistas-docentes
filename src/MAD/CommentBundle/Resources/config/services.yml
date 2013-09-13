@@ -1,0 +1,7 @@
+parameters:
+#    mad_comment.example.class: MAD\CommentBundle\Example
+
+services:
+#    mad_comment.example:
+#        class: %mad_comment.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

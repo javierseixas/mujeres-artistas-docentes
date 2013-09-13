@@ -1,0 +1,33 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Mi Espacio | Mujeres Artistas Docentes{% endblock %}
+
+{% block header %}
+    {% include 'MADExperienceBundle:Headers:home.html.twig' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="row-fluid">
+
+    <div class="span7">
+        <div class="neutral home-intro">
+            <h2>¿Qué deseas hacer?</h2>
+            <p>A través de estas secciones podremos compartir nuestras experiencias, reflexionar y dialogar sobre nuestros tránsitos como mujeres artistas y docentes.</p>
+        </div>
+    </div>
+
+    <div class="span5 home-menu">
+        <ul>
+            <li class="my-exp"><a href="{{ path('mad_experience_my_experiences') }}" id="myExperiencesMenuOpt">Escribir y compartir experiencias</a></li>
+            <li class="shared-exp"><a href="{{ path('mad_experience_shared_experiences') }}">Leer experiencias compartidas</a></li>
+            <li class="forum"><a href="{{ path('mad_experience_forum_home') }}">Foro de reflexión y discusión</a></li>
+            <li class="invest"><a href="{{ path('mad_experience_investigation_index') }}">Información sobre la investigación</a></li>
+            {% if is_granted('ROLE_RESEARCHER') %}
+                <li class="admin"><a href="{{ path('mad_experience_ask_experience') }}" id="askExperiencesMenuOpt">Preguntar experiencias</a></li>
+            {%  endif %}
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}

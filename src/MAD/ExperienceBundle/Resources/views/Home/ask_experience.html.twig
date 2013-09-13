@@ -1,0 +1,22 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block content %}
+
+    <h1>Preguntar experiencia</h1>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+	<div class="row-fluid">
+        <form action="{{ path('mad_experience_ask_experience') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+
+            <input type="submit" />
+        </form>
+	</div>
+
+{% endblock content %}
+

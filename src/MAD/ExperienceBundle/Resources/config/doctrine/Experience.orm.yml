@@ -1,0 +1,43 @@
+MAD\ExperienceBundle\Entity\Experience:
+    type: entity
+    table: experiences
+    repositoryClass: MAD\ExperienceBundle\Repository\ExperienceRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        account:
+            type: text
+        sharedWithResearcher:
+            type: boolean
+            column: shared_with_researcher
+        sharedWithAll:
+            type: boolean
+            column: shared_with_all
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+            gedmo:
+                timestampable:
+                  on: create
+    manyToOne:
+        user:
+            targetEntity: MAD\UserBundle\Entity\User
+            inversedBy: experiences
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+            cascade: ['persist']
+        question:
+            targetEntity: MAD\ExperienceBundle\Entity\Question
+            inversedBy: experiences
+            joinColumn:
+                name: question_id
+                referencedColumnName: id
+                nullable: true
+            cascade: ['persist']
+    lifecycleCallbacks: { }

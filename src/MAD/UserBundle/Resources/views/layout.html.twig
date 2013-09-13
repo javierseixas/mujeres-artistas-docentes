@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
+    {% stylesheets  filter='compass,cssrewrite'
+    "@MADExperienceBundle/Resources/assets/css/fonts.scss"
+    "@MADExperienceBundle/Resources/assets/css/vars.scss"
+    "@MADExperienceBundle/Resources/assets/css/style.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="row-fluid login-top-bar">
+	<div style="width:5%; background: #666;"></div>
+	<div class="title" style="width: 32.5%"><h1>MujeresArtistasDocentes</h1></div>
+	<div class="my-exp"></div>
+	<div class="shared-exp"></div>
+	<div class="forum"></div>
+	<div class="invest"></div>
+	<div class="" style="background-color: #666;"></div>
+</div>
+
+<div class="row-fluid title-header">
+	<div style="width:5%;"></div>
+	<div style="width:95%" class="cont">
+		<div style="width:33%"><img style="width:100%;" src="{{ asset('bundles/madexperience/images/dani_small.jpg') }}" /></div>
+		<div class="title"><h1>INVESTIGÁCIÓN DE DOCTORADO</h1>
+	        <h3>"Profesoras de Artes Visuales en Chile. Comprender el tránsito entre la práctica artística y docente desde experiencias narrativas."</h3>
+	    </div>
+	</div>
+</div>
+
+{% block content %}
+	{{ block('fos_user_content')}}
+{% endblock content %}
+
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/madexperience/bootstrap/js/bootstrap.min.js') }}"></script>
+{% endblock %}

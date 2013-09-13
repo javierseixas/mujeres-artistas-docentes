@@ -1,0 +1,25 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Experiencia | Mujeres Artistas Docentes{% endblock %}
+
+{% block header %}
+    <div class="row-fluid my-exp-header">
+        <div class="span12"><div class=" only-text"><h1 class="">Escribir experiencias</h1> <a href="{{ path('mad_experience_show_questions', {subjectId : experience.question.subject.id}) }}">{{ experience.question.subject.title }} >></a></div></div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <h3>{{ experience.question.title }}</h3>
+
+    <div class="signature">Escrita por <b>{{ experience.user.username }}</b> en {{ experience.createdAt | date('d/m/Y') }}</div>
+
+    <div>{{ experience.account | raw }}</div>
+
+
+    <div>
+        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
+    </div>
+
+{% endblock content %}
+

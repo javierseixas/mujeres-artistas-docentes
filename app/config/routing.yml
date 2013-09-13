@@ -1,0 +1,11 @@
+mad_comment:
+    resource: "@MADCommentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mad_experience:
+    resource: "@MADExperienceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mad_user:
+    resource: "@MADUserBundle/Resources/config/routing.yml"
+    prefix:   /

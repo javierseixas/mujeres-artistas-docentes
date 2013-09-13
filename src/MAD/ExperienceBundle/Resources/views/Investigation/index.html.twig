@@ -1,0 +1,23 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}La investigación | Mujeres Artistas Docentes{% endblock %}
+
+{% block header %}
+    {% include 'MADExperienceBundle:Headers:investigation.html.twig' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="row-fluid">
+    <div class="span5 subjects-main-list">
+        <h3>Áreas</h3>
+        <ul>
+            <li class="neutral"><a href="{{ path('mad_experience_investigation_project') }}">Proyecto de Investigación</a></li>
+            <li class="neutral"><a href="{{ path('mad_experience_investigation_feminism') }}">Las Teorías Feministas</a></li>
+            <li class="neutral"><a href="{{ path('mad_experience_investigation_narrative') }}">La Narrativa</a></li>
+            <li class="neutral"><a href="{{ path('mad_experience_investigation_other') }}">Otros temas de interés relacionados con la investigación</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}

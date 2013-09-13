@@ -1,0 +1,28 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Experiencias Compartidas | Mujeres Artistas Docentes{% endblock %}
+
+{% block header %}
+    {% include 'MADExperienceBundle:Headers:shared_exp.html.twig' %}
+{% endblock header %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="span12">
+            <h3>Temas de reflexión</h3>
+        </div>
+        <div class="span4 subjects-main-list">
+            <ul class="">
+                {% for subject in subjectsList %}
+                    <li class="neutral"><a href="{{ path('mad_experience_shared_experiences_experiences', { subjectId : subject.id }) }}">{{ subject.title }}</a></li>
+                {% else %}
+                    <p>En breve se publicarán los temas.</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+
+{% endblock content %}

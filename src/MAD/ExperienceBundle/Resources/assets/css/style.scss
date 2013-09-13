@@ -1,0 +1,402 @@
+@import "fonts";
+@import "vars";
+
+@mixin border-box {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+@mixin block-list {
+  ul {
+    color: #000000;
+    text-decoration: none;
+    margin: 0;
+    list-style: none;
+    li {
+      margin: 0px 0px 16px 0;
+      a {
+        padding: 15px 15px 15px  25px;
+        display: block;
+        color: #000000;
+        text-decoration: none;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@mixin button-darken($color) {
+  background-color: darken($color, 9%);
+}
+
+h1 {
+  padding: .5em 0;
+  font-size: 33px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h1, h2, h3 {
+  font-family: $font-reg;
+}
+
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+
+  h1 {
+    font-family: $font-reg;
+  }
+
+  h3 {
+    font-family: $font-reg;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 26px;
+  }
+}
+
+.home-header {
+  background: $default-color;
+}
+
+.neutral-box {
+  padding: 15px;
+}
+
+.my-exp-header {
+  background: $my-experiences-color;
+}
+
+.my-exp {
+  background-color: $my-experiences-color;
+}
+
+.my-exp:hover {
+  @include button-darken($my-experiences-color);
+}
+
+.shared-exp-header {
+  background-color: $shared-experiences-color;
+}
+
+.shared-exp {
+  background-color: $shared-experiences-color;
+}
+
+.shared-exp:hover {
+  @include button-darken($shared-experiences-color);
+}
+
+.forum-header {
+  background-color: $forum-color;
+}
+
+.forum {
+  background-color: $forum-color;
+}
+
+.forum:hover {
+  @include button-darken($forum-color);
+}
+
+.invest {
+  background-color: $investigation-color;
+}
+
+.invest:hover {
+  @include button-darken($investigation-color);
+}
+
+.investigation-header {
+  background-color: $investigation-color;
+}
+
+.neutral {
+  background-color: $default-color;
+}
+
+.neutral:hover {
+  @include button-darken($default-color);
+}
+
+.admin {
+  background-color: $default-color;
+}
+
+.admin:hover {
+  @include button-darken($default-color);
+}
+
+.home-intro {
+  background-color: $default-color;
+  padding: 15px;
+  text-align: center;
+
+  p {
+    font-size: 20px;
+    line-height: 27px;
+  }
+}
+
+.general-container {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  
+}
+
+.home-menu {
+  @include block-list;
+}
+
+ul.shared-exp-list {
+  li {
+    h4 {
+      font-family: $font-reg;
+      margin-top: 28px;
+    }
+
+    ul {
+      margin-left: 20px;
+      li {
+        margin: 14px;
+      }
+    }
+  }
+}
+
+.investigation-experiences {
+
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+    list-style-position: inside;
+
+    ul {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  h4 {
+
+  }
+}
+
+.subjects-main-list {
+  @include block-list;
+}
+
+.h3-button {
+  margin-top: 13px;
+}
+
+.only-text {
+  width: 95%;
+  margin: 0 auto;
+
+  h1, a {
+    display: inline-block;
+  }
+
+  a {
+    color: #222222;
+    font-style: italic;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 20px;
+    padding: 0;
+  }
+}
+
+.questions-list {
+  @include block-list;
+
+  ul {
+
+    li {
+      padding: 15px 15px 15px 25px;
+      font-size: 18px;
+
+      a {
+        display: inline;
+        color: #ffffff;
+        padding: inherit;
+        padding: 4px 12px;
+        font-size: 14px;
+      }
+
+      span {
+        line-height: 30px;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+
+        a {
+          font-size: 12px;
+          display: inline;
+          padding: 0;
+          font-style: none;
+          color: #0044cc;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+    li:hover {
+      background-color: $default-color;
+    }
+  }
+}
+
+.signature {
+  font-size: 12px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.references {
+  margin-top: 30px;
+
+  ul {
+    margin: 0;
+
+    li {
+      list-style: none;
+      margin: 20px 0;
+    }
+  }
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.navbar-inverse .brand {
+  color: #ffffff;
+}
+
+.login-top-bar {
+  margin-top: 20px;
+  div {
+    width: 12.5%;
+    height: 60px;
+    float: left;
+  }
+  .title {
+    font-family: $font-reg;
+    text-align: center;
+    background-color: $default-color;
+    h1 {
+      font-size: 25px;
+      padding-top: 0px;
+    }
+  }
+}
+
+.title-header {
+  background-color: #666;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  div {
+    float: left;
+    min-width: 5%;
+    min-height: 100px;
+    box-sizing: border-box;
+  }
+  .cont {
+    background-color: $default-color;
+  }
+  .title {
+    width:67%;
+    text-align: center;
+    padding: 0 10px;
+    @include border-box();
+    h3 {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+}
+
+.login-signature {
+  @include border-box();
+  float: left;
+  background-color: $default-color;
+  padding: 8px;
+  text-align: center;
+
+  h1, h2 {
+    line-height: 17px;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0;
+  }
+
+  p {
+    font-size: 13px;
+    font-family: $font-reg;
+    margin: 0;
+  }
+}
+
+.login-intro {
+  div {
+    @include border-box();
+    text-align: center;
+    font-size: 20px;
+    font-family: $font-reg;
+    background-color: $default-color;
+    padding: 17px;
+    color: #000;
+    line-height: 24px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.login-form {
+  .formu {
+    @include border-box();
+    background-color: $default-color;
+    padding: 8px;
+    width: 37.5%;
+    float: left;
+    form {
+      margin: 0;
+    }
+  }
+}
+
+.know-more {
+  @include border-box();
+  background-color: $default-color;
+  padding: 8px;
+  width: 62.5%;
+  text-align: center;
+  float: left;
+  margin-bottom: 20px;
+  a {
+    color: #000;
+    font-family: $font-reg;
+    font-size: 16px;
+  }
+}

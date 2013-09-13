@@ -1,0 +1,33 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block title %}Experiencias compartidas | Mujeres Artistas Docentes{% endblock %}
+
+{% block header %}
+    <div class="row-fluid my-exp-header">
+        <div class="span12"><div class="only-text"><h1 class="">Ver experiencias compartidas</h1></div></div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span12">
+        <h3>{{ subject.title }}</h3>
+        <ul class="investigation-experiences shared-exp-list">
+            {% for question in experiences %}
+                <li class=""><h4>{{ question.title }}</h4>
+                    <ul>
+                        {% for experience in question.experiences %}
+                            <li>Experiencia compartida por <b>{{ experience.user.username }}</b> el {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_shared_experience', {experienceId : experience.id}) }}">Leer</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <p>No hay experiencias compartidas para esta pregunta</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endblock content %}

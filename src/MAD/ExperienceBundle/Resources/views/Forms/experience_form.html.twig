@@ -1,0 +1,63 @@
+{% extends "MADExperienceBundle::gathering_place_layout.html.twig" %}
+
+{% block header %}
+    <div class="row-fluid my-exp-header">
+        <div class="span12"><div class=" only-text"><h1 class="">Escribir experiencias</h1> <a href="{{ path('mad_experience_show_questions', {subjectId : question.subject.id}) }}">{{ question.subject.title }} >></a></div></div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="span12">
+
+    <h3>{% block form_title %}{% endblock form_title %}</h3>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice alert">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="span12">
+        <h4>{{ question.title }}</h4>
+        <div class="well well-large">
+            {{ question.wording | raw }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+        {% block form %}{% endblock form %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block extra_stylesheets %}
+    <link href="{{ asset('bundles/madexperience/vendor/redactor/redactor.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script src="{{ asset('bundles/madexperience/vendor/redactor/redactor.ugly.js') }}"></script>
+    <script src="{{ asset('bundles/madexperience/vendor/redactor/plugins/fullscreen.js') }}"></script>
+    <script type="text/javascript">
+        var buttons = ['bold', 'italic', 'deleted', 'fullscreen', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'link', 'image'];
+        $(document).ready(function() {
+            $('#experience_account').redactor({
+                focus: true,
+                buttons: buttons,
+                plugins: ['fullscreen'],
+                imageUpload: '{{ url('mad_experience_ajax_upload_image') }}'
+            });
+        });
+    </script>
+{% endblock %}

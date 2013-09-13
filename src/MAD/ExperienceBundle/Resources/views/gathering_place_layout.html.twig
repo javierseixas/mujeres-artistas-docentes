@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
+    {% stylesheets  filter='compass,cssrewrite'
+    "@MADExperienceBundle/Resources/assets/css/fonts.scss"
+    "@MADExperienceBundle/Resources/assets/css/vars.scss"
+    "@MADExperienceBundle/Resources/assets/css/style.scss"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block body %}
+
+    {% block nav %}
+    
+    {% if app.user %}
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+
+                    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <!-- Be sure to leave the brand out there if you want it shown -->
+                    <a class="brand" href="{{ path('mad_experience_homepage') }}">MujeresArtistasDocentes</a>
+
+                    <p class="navbar-text pull-right">
+                        {% if app.user.picture %}
+                        <img style="width: 32px; height: 32px;" src="/uploads/avatars/{{ app.user.picture }}" /> 
+                        {% endif %}{{ app.user.username }} | <a href="{{ path('fos_user_security_logout') }}">Salir</a>
+                    </p>
+
+                    <!-- Everything you want hidden at 940px or less, place within here -->
+                    <div class="nav-collapse collapse navbar-inverse-collapse">
+                        <ul class="nav">
+                            <li><a href="{{ path('mad_experience_my_experiences') }}">Escribir experiencias</a></li>
+                            <li><a href="{{ path('mad_experience_shared_experiences') }}">Experiencias compartidas</a></li>
+                            <li><a href="{{ path('mad_experience_forum_home') }}">Foro de reflexión</a></li>
+                            <li><a href="{{ path('mad_experience_investigation_index') }}">Sobre la investigación</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% else %}
+
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                <a class="brand" href="{{ path('mad_experience_homepage') }}">MujeresArtistasDocentes</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endblock nav %}
+
+    <div class="general-container">
+
+    {% block header %}{% endblock header %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    </div>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/madexperience/bootstrap/js/bootstrap.min.js') }}"></script>
+{% endblock %}

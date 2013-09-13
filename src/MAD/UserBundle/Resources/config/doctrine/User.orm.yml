@@ -1,0 +1,35 @@
+MAD\UserBundle\Entity\User:
+    type:  entity
+    table: users
+    repositoryClass: MAD\UserBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        picture:
+            type: string
+            lenght: 40
+            nullable: true
+        passwordChanged:
+            type: boolean
+            column: password_changed
+            nullable: true
+    manyToMany:
+      groups:
+        targetEntity: Group
+        joinTable:
+          name: users_groups
+          joinColumns:
+            user_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+            group_id:
+              referencedColumnName: id
+    oneToMany:
+        experiences:
+            targetEntity: MAD\ExperienceBundle\Entity\Experience
+            mappedBy: user
+            cascade: ["all"]

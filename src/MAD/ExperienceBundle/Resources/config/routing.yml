@@ -1,0 +1,83 @@
+mad_experience_homepage:
+    pattern:  /mi-espacio
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:home }
+
+mad_experience_my_experiences:
+    pattern:  /escribir-experiencias
+    defaults: { _controller: MADExperienceBundle:MyExperiences:myExperiences }
+
+mad_experience_show_questions:
+    pattern:  /escribir-experiencias/preguntas/{subjectId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:showQuestions }
+
+mad_experience_write_experience:
+    pattern:  /escribir-experiencias/escribir
+    defaults: { _controller: MADExperienceBundle:MyExperiences:writeExperience }
+
+mad_experience_edit_experience:
+    pattern:  /escribir-experiencias/editar/{experienceId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:editExperience }
+
+mad_experience_read_experience:
+    pattern:  /escribir-experiencias/leer/{experienceId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:readExperience }
+
+mad_experience_ask_experience:
+    pattern:  /investigacion/preguntar
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:askExperience }
+
+mad_experience_answer_question:
+    pattern:  /escribir-experiencias/responder/{questionId}
+    defaults: { _controller: MADExperienceBundle:MyExperiences:answerQuestion }
+
+mad_experience_ajax_upload_image:
+    pattern:  /ajax/upload-image
+    defaults: { _controller: MADExperienceBundle:Ajax:uploadImage }
+
+mad_experience_shared_experiences:
+    pattern:  /experiencias-compartidas
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:list }
+
+mad_experience_shared_experiences_experiences:
+    pattern:  /experiencias-compartidas/experiencias/{subjectId}
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:showExperiences }
+
+mad_experience_read_shared_experience:
+    pattern:  /experiencias-compartidas/leer/{experienceId}
+    defaults: { _controller: MADExperienceBundle:SharedExperiences:readExperience }
+
+
+#Invetigation
+
+mad_experience_investigation_index:
+    pattern:  /investigacion
+    defaults: { _controller: MADExperienceBundle:Investigation:index }
+
+mad_experience_investigation_project:
+    pattern:  /investigation/proyecto
+    defaults: { _controller: MADExperienceBundle:Investigation:project }
+
+mad_experience_investigation_feminism:
+    pattern:  /investigation/teorias-feministas
+    defaults: { _controller: MADExperienceBundle:Investigation:feminism }
+
+mad_experience_investigation_narrative:
+    pattern:  /investigation/narrativa
+    defaults: { _controller: MADExperienceBundle:Investigation:narrative }
+
+mad_experience_investigation_other:
+    pattern:  /investigation/otros-temas-interes
+    defaults: { _controller: MADExperienceBundle:Investigation:otherSubjects }
+
+mad_experience_forum_home:
+    pattern:  /foro
+    defaults: { _controller: MADExperienceBundle:Forum:home }
+
+
+mad_experience_set_groups:
+    pattern:  /set-groups
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:setGroups }
+
+mad_experience_set_subjects:
+    pattern:  /set-subjects
+    defaults: { _controller: MADExperienceBundle:GatheringPlace:setSubjects }

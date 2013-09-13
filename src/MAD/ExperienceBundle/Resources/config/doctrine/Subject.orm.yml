@@ -1,0 +1,19 @@
+MAD\ExperienceBundle\Entity\Subject:
+    type: entity
+    table: subjects
+    repositoryClass: MAD\ExperienceBundle\Repository\SubjectRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: '80'
+    oneToMany:
+        questions:
+            targetEntity: MAD\ExperienceBundle\Entity\Question
+            mappedBy: subject
+            cascade: ["all"]
+    lifecycleCallbacks: { }
