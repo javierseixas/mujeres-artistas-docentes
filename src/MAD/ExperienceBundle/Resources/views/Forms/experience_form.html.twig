@@ -15,7 +15,7 @@
     <h3>{% block form_title %}{% endblock form_title %}</h3>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-notice">
+        <div class="flash-notice alert">
             {{ flashMessage }}
         </div>
     {% endfor %}

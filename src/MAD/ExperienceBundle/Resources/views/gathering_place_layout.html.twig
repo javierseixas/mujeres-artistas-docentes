@@ -43,7 +43,7 @@
                         <ul class="nav">
                             <li><a href="{{ path('mad_experience_my_experiences') }}">Escribir experiencias</a></li>
                             <li><a href="{{ path('mad_experience_shared_experiences') }}">Experiencias compartidas</a></li>
-                            <li><a href="#">Foro de reflexión</a></li>
+                            <li><a href="{{ path('mad_experience_forum_home') }}">Foro de reflexión</a></li>
                             <li><a href="{{ path('mad_experience_investigation_index') }}">Sobre la investigación</a></li>
                         </ul>
                     </div>
@@ -63,9 +63,9 @@
         {% endif %}
     {% endblock nav %}
 
-    {% block header %}{% endblock header %}
-
     <div class="general-container">
+
+    {% block header %}{% endblock header %}
 
     {% block content %}
 

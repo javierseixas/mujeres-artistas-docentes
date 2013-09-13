@@ -69,6 +69,10 @@ mad_experience_investigation_other:
     pattern:  /investigation/otros-temas-interes
     defaults: { _controller: MADExperienceBundle:Investigation:otherSubjects }
 
+mad_experience_forum_home:
+    pattern:  /foro
+    defaults: { _controller: MADExperienceBundle:Forum:home }
+
 
 mad_experience_set_groups:
     pattern:  /set-groups
