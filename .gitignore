@@ -9,3 +9,4 @@
 /composer.phar
 /*.sublime-*
 /.idea
+/.rsync_cache

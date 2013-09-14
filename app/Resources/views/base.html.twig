@@ -3,7 +3,20 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Mujeres Artistas Docentes{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+            <link href="{{ asset('bundles/madexperience/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
+            {% stylesheets  filter='cssrewrite'
+            output='css/styles.css'
+            "@MADExperienceBundle/Resources/assets/css/fonts.scss"
+            "@MADExperienceBundle/Resources/assets/css/vars.scss"
+            "@MADExperienceBundle/Resources/assets/css/style.scss"
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
         {% block extra_stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
