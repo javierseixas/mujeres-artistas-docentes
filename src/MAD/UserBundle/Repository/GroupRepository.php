@@ -17,7 +17,7 @@ class GroupRepository extends EntityRepository
         ;
 
         $query = $qb->getQuery();
-$sql = $query->getSQL();
+
         return $query->getResult();
 
     }

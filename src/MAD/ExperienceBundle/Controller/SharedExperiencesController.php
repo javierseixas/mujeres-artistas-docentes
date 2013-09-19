@@ -23,7 +23,13 @@ class SharedExperiencesController extends Controller
     {
         $user = $this->get('security.context')->getToken()->getUser();
         $userGroups = $this->getDoctrine()->getRepository('MADUserBundle:Group')->findGroupsByUser($user->getId());
-        $experiences = $this->getDoctrine()->getRepository('MADExperienceBundle:Question')->findQuestionsAndSharedAnswersByGroups($userGroups, $subjectId);
+
+        if ($this->get('security.context')->isGranted('ROLE_RESEARCHER'))
+        {
+            $experiences = $this->getDoctrine()->getRepository('MADExperienceBundle:Question')->findQuestionsAndAnswersByGroups($userGroups, $subjectId);
+        } else {
+            $experiences = $this->getDoctrine()->getRepository('MADExperienceBundle:Question')->findQuestionsAndSharedAnswersByGroups($userGroups, $subjectId);
+        }
 
         $subject = $this->getDoctrine()->getRepository('MADExperienceBundle:Subject')->find($subjectId);
 

@@ -37,7 +37,7 @@ class QuestionRepository extends EntityRepository
             ->leftJoin('q.groups', 'g')
             ->where($qb->expr()->eq('q.subject', ':subjectId'))
             ->andWhere($qb->expr()->in('g.id', ':groupIds'))
-            ->Andwhere($qb->expr()->eq('e.sharedWithAll', ':sharedWithAll'))
+            ->andwhere($qb->expr()->eq('e.sharedWithAll', ':sharedWithAll'))
             ->setParameter('groupIds', $this->getGroupsId($groups))
             ->setParameter('subjectId', $subjectId)
             ->setParameter('sharedWithAll', true)
@@ -48,26 +48,23 @@ class QuestionRepository extends EntityRepository
         return $query->getResult();
     }
 
-//    public function findSubjectQuestionsAndSharedAnswers()
-//    {
-//        $qb = $this->_em->createQueryBuilder();
-//        $qb->select('s, q, e, u')
-//            ->from('MADExperienceBundle:Subject','s')
-//            ->innerJoin('s.questions','q')
-//            ->leftJoin('q.experiences','e')
-//            ->leftJoin('e.user', 'u')
-//            ->where($qb->expr()->eq('e.sharedWithAll', ':sharedWithAll'))
-//            ->groupBy('s.id')
-//            ->addGroupBy('q.id')
-//            ->addGroupBy('e.id')
-//            ->addGroupBy('u.id')
-//            ->setParameter('sharedWithAll', true)
-//        ;
-//
-//        $query = $qb->getQuery();
-//
-//        return $query->getResult();
-//    }
+    public function findQuestionsAndAnswersByGroups($groups, $subjectId)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('q, e, g')
+            ->from('MADExperienceBundle:Question','q')
+            ->leftJoin('q.experiences','e')
+            ->leftJoin('q.groups', 'g')
+            ->where($qb->expr()->eq('q.subject', ':subjectId'))
+            ->andWhere($qb->expr()->in('g.id', ':groupIds'))
+            ->setParameter('groupIds', $this->getGroupsId($groups))
+            ->setParameter('subjectId', $subjectId)
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 
     protected function getGroupsId($groups)
     {
