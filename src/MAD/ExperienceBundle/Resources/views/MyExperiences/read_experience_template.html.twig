@@ -12,7 +12,7 @@
 
     <h3>{{ experience.question.title }}</h3>
 
-    <div class="signature">Escrita por <b>{{ experience.user.username }}</b> en {{ experience.createdAt | date('d/m/Y') }}</div>
+    <div class="signature">Escrita por <b>{{ experience.user.username }}</b> en {{ experience.createdAt | date('d/m/Y') }} {% if app.user.id == experience.user.id %} | <a href="{{ path('mad_experience_edit_experience', { experienceId : experience.id }) }}">editar</a>{% endif %}</div>
 
     <div>{{ experience.account | raw }}</div>
 
