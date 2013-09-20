@@ -3,16 +3,17 @@
 namespace MAD\ExperienceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * Experience
  */
-class Experience
+class Experience extends BaseThread
 {
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string

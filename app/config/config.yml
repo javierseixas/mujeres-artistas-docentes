@@ -88,4 +88,4 @@ fos_comment:
     class:
         model:
             comment: MAD\CommentBundle\Entity\Comment
-            thread: MAD\CommentBundle\Entity\Thread
+            thread: MAD\ExperienceBundle\Entity\Experience
