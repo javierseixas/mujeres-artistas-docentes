@@ -1,7 +1,9 @@
 parameters:
-#    mad_comment.example.class: MAD\CommentBundle\Example
+    mad_comment.send_email_listener.class: MAD\CommentBundle\EventListener\SendEmailListener
 
 services:
-#    mad_comment.example:
-#        class: %mad_comment.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    mad_comment.send_email_listener:
+        class: %mad_comment.send_email_listener.class%
+        arguments: [@mailer, @templating]
+        tags:
+            - { name: kernel.event_subscriber }
