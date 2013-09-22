@@ -36,7 +36,8 @@ class SendEmailListener implements EventSubscriberInterface
                         'experience' => $comment->getThread(),
                         'comment' => $comment,
                     )
-                )
+                ),
+                'text/html'
             )
         ;
         $this->mailer->send($message);
