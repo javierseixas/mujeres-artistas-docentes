@@ -49,6 +49,7 @@ class MyExperiencesController extends Controller
     	$experience = new Experience();
         $experience->setUser($this->get('security.context')->getToken()->getUser());
 
+
     	$form = $this->createForm(new ExperienceType(), $experience);
 
         if ($request->isMethod('POST')) {
@@ -139,6 +140,7 @@ class MyExperiencesController extends Controller
                 if (false !== strpos($request->get('share'), 'todas')) $experience->setSharedWithAll(true);
 
                 $em = $this->getDoctrine()->getManager();
+                $experience->setPermalink('');
                 $em->persist($experience);
                 $em->flush();
 
