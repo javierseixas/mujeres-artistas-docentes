@@ -18,7 +18,7 @@
                 <li class=""><h4>{{ question.title }}</h4>
                     <ul>
                         {% for experience in question.experiences %}
-                            <li>Experiencia compartida por <b>{{ experience.user.username }}</b> el {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_shared_experience', {experienceId : experience.id}) }}">Leer</a></li>
+                            <li><img  style="width: 26px; height: 26px; margin-right: 5px;" src="{{ asset('/uploads/avatars/'~ experience.user.picture) }}" /> Experiencia compartida por <b>{{ experience.user.username }}</b> el {{ experience.createdAt | date('d/m/Y') }} <a href="{{ path('mad_experience_read_shared_experience', {experienceId : experience.id}) }}">Leer</a></li>
                         {% endfor %}
                     </ul>
                 </li>
