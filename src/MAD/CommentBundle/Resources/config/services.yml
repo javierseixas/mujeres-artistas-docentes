@@ -1,9 +1,14 @@
 parameters:
     mad_comment.send_email_listener.class: MAD\CommentBundle\EventListener\SendEmailListener
+    mad_comment.check_comment_author_listener.class: MAD\CommentBundle\EventListener\CheckCommentAuthorListener
 
 services:
     mad_comment.send_email_listener:
         class: %mad_comment.send_email_listener.class%
         arguments: [@mailer, @templating]
+        tags:
+            - { name: kernel.event_subscriber }
+    mad_comment.check_comment_author_listener:
+        class: %mad_comment.check_comment_author_listener.class%
         tags:
             - { name: kernel.event_subscriber }

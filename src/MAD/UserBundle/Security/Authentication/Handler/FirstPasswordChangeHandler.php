@@ -30,11 +30,8 @@ class FirstPasswordChangeHandler implements AuthenticationSuccessHandlerInterfac
             $response = new RedirectResponse($this->router->generate('fos_user_change_password'));
         } elseif (null === $user->getPicture()) {
             $response = new RedirectResponse($this->router->generate('mad_user_edit_picture'));
-        } elseif ($request->headers->get('referer')) {
-            // redirect the user to where they were before the login process begun.
-            $referer_url = $request->headers->get('referer');
-
-            $response = new RedirectResponse($this->router->generate('mad_experience_homepage'));
+        } elseif ($request->getSession()->get('_security.main.target_path')) {
+            $response = new RedirectResponse($request->getSession()->get('_security.main.target_path'));
         } else {
             $response = new RedirectResponse($this->router->generate('mad_experience_homepage'));
         }

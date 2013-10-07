@@ -59,4 +59,5 @@ security:
         - { path: ^/mis-experiencias, role: [ROLE_ADMIN,ROLE_TEACHER, ROLE_RESEARCHER, ROLE_ARTIST, ROLE_ARTIST_TEACHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER, ROLE_ARTIST, ROLE_ARTIST_TEACHER] }
         - { path: ^/experiencias-compartidas, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER, ROLE_ARTIST, ROLE_ARTIST_TEACHER] }
+        - { path: ^/escribir-experiencias, role: [ROLE_ADMIN, ROLE_TEACHER, ROLE_RESEARCHER, ROLE_ARTIST, ROLE_ARTIST_TEACHER] }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
